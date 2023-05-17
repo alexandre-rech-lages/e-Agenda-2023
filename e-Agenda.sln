@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "e-Agenda.WinApp", "e-Agenda
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "e-Agenda.ConsoleApp", "e-Agenda.ConsoleApp\e-Agenda.ConsoleApp.csproj", "{F780A3E2-E838-48D3-BB8F-9292A16E9B1A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "teste", "teste\teste.csproj", "{DBDB1781-165E-4A07-B8B6-1E9DEA841372}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary1", "ClassLibrary1\ClassLibrary1.csproj", "{FB3FE43E-36A4-4150-A8D6-650EEF8344D7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{F780A3E2-E838-48D3-BB8F-9292A16E9B1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F780A3E2-E838-48D3-BB8F-9292A16E9B1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F780A3E2-E838-48D3-BB8F-9292A16E9B1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBDB1781-165E-4A07-B8B6-1E9DEA841372}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBDB1781-165E-4A07-B8B6-1E9DEA841372}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBDB1781-165E-4A07-B8B6-1E9DEA841372}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBDB1781-165E-4A07-B8B6-1E9DEA841372}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB3FE43E-36A4-4150-A8D6-650EEF8344D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB3FE43E-36A4-4150-A8D6-650EEF8344D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB3FE43E-36A4-4150-A8D6-650EEF8344D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB3FE43E-36A4-4150-A8D6-650EEF8344D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
