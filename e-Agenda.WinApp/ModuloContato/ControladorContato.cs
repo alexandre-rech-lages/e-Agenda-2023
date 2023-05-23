@@ -55,7 +55,7 @@ namespace e_Agenda.WinApp.ModuloContato
 
             if (opcaoEscolhida == DialogResult.OK)
             {
-                repositorioContato.Editar(telaContato.Contato);
+                repositorioContato.Editar(telaContato.Contato.id, telaContato.Contato);
 
                 CarregarContatos();
             }

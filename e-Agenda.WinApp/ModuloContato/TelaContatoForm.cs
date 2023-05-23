@@ -42,6 +42,15 @@
 
             if (txtId.Text != "0")
                 contato.id = Convert.ToInt32(txtId.Text);
+
+            string[] erros = contato.Validar();
+
+            if (erros.Length > 0)
+            {
+                TelaPrincipalForm.Instancia.AtualizarRodape(erros[0]);
+
+                DialogResult = DialogResult.None;
+            }           
         }
     }
 }

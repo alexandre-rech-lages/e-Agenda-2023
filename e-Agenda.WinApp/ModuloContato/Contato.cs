@@ -2,7 +2,7 @@
 
 namespace e_Agenda.WinApp.ModuloContato
 {
-    public class Contato : EntidadeBase
+    public class Contato : EntidadeBase<Contato>
     {
         public int id;
         public string nome;
@@ -20,9 +20,34 @@ namespace e_Agenda.WinApp.ModuloContato
             this.empresa = empresa;
         }
 
+        public override void AtualizarInformacoes(Contato registroAtualizado)
+        {
+            this.nome = registroAtualizado.nome;
+            this.telefone = registroAtualizado.telefone;
+            this.email = registroAtualizado.email;
+            this.cargo = registroAtualizado.cargo;
+            this.empresa = registroAtualizado.empresa;
+        }
+
         public override string ToString()
         {
             return "Id: " + id + ", " + nome + ", Empresa: " + empresa;
+        }
+
+        public override string[] Validar()
+        {
+            List<string> erros = new List<string>();
+
+            if (string.IsNullOrEmpty(nome))
+                erros.Add("O campo 'nome' é obrigatório");
+
+            if (string.IsNullOrEmpty(telefone))
+                erros.Add("O campo 'telefone' é obrigatório");
+
+            if (string.IsNullOrEmpty(email))
+                erros.Add("O campo 'email' é obrigatório");
+
+            return erros.ToArray();
         }
     }
 }
