@@ -42,7 +42,7 @@
             // btnFiltrar
             // 
             btnFiltrar.DialogResult = DialogResult.OK;
-            btnFiltrar.Location = new Point(273, 267);
+            btnFiltrar.Location = new Point(156, 298);
             btnFiltrar.Name = "btnFiltrar";
             btnFiltrar.Size = new Size(75, 50);
             btnFiltrar.TabIndex = 0;
@@ -52,7 +52,7 @@
             // btnCancelar
             // 
             btnCancelar.DialogResult = DialogResult.Cancel;
-            btnCancelar.Location = new Point(354, 267);
+            btnCancelar.Location = new Point(237, 298);
             btnCancelar.Name = "btnCancelar";
             btnCancelar.Size = new Size(75, 50);
             btnCancelar.TabIndex = 1;
@@ -91,44 +91,49 @@
             rdbFuturos.TabStop = true;
             rdbFuturos.Text = "Visualizar Compromissos Futuros";
             rdbFuturos.UseVisualStyleBackColor = true;
+            rdbFuturos.CheckedChanged += rdbFuturos_CheckedChanged;
             // 
             // txtDataInicio
             // 
+            txtDataInicio.Enabled = false;
+            txtDataInicio.Format = DateTimePickerFormat.Short;
             txtDataInicio.Location = new Point(91, 164);
             txtDataInicio.Name = "txtDataInicio";
-            txtDataInicio.Size = new Size(200, 23);
+            txtDataInicio.Size = new Size(149, 23);
             txtDataInicio.TabIndex = 5;
             // 
             // txtDataFinal
             // 
+            txtDataFinal.Enabled = false;
+            txtDataFinal.Format = DateTimePickerFormat.Short;
             txtDataFinal.Location = new Point(91, 202);
             txtDataFinal.Name = "txtDataFinal";
-            txtDataFinal.Size = new Size(200, 23);
+            txtDataFinal.Size = new Size(151, 23);
             txtDataFinal.TabIndex = 6;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(28, 166);
+            label1.Location = new Point(17, 170);
             label1.Name = "label1";
-            label1.Size = new Size(38, 15);
+            label1.Size = new Size(68, 15);
             label1.TabIndex = 7;
-            label1.Text = "label1";
+            label1.Text = "Data Inicial:";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(30, 208);
+            label2.Location = new Point(23, 208);
             label2.Name = "label2";
-            label2.Size = new Size(38, 15);
+            label2.Size = new Size(62, 15);
             label2.TabIndex = 8;
-            label2.Text = "label2";
+            label2.Text = "Data Final:";
             // 
             // TelaFiltroCompromissoForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(441, 329);
+            ClientSize = new Size(324, 369);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(txtDataFinal);

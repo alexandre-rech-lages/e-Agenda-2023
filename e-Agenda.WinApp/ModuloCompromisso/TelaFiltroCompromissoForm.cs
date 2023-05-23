@@ -32,5 +32,12 @@
         {
             return txtDataFinal.Value;
         }
+
+        private void rdbFuturos_CheckedChanged(object sender, EventArgs e)
+        {
+            txtDataInicio.Enabled = !txtDataInicio.Enabled;
+            txtDataFinal.Enabled = !txtDataFinal.Enabled;
+        }
+
     }
 }

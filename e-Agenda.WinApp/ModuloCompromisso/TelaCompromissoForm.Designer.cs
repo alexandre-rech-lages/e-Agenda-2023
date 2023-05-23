@@ -45,10 +45,9 @@
             rdbOnline = new RadioButton();
             rdbPresencial = new RadioButton();
             txtLocalOnline = new TextBox();
-            label8 = new Label();
             txtLocalPresencial = new TextBox();
-            label7 = new Label();
             groupBox1 = new GroupBox();
+            chkSelecionarContato = new CheckBox();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -105,9 +104,11 @@
             // 
             // txtHorarioInicio
             // 
-            txtHorarioInicio.Format = DateTimePickerFormat.Time;
+            txtHorarioInicio.CustomFormat = "HH:mm";
+            txtHorarioInicio.Format = DateTimePickerFormat.Custom;
             txtHorarioInicio.Location = new Point(83, 117);
             txtHorarioInicio.Name = "txtHorarioInicio";
+            txtHorarioInicio.ShowUpDown = true;
             txtHorarioInicio.Size = new Size(124, 23);
             txtHorarioInicio.TabIndex = 7;
             // 
@@ -123,9 +124,11 @@
             // 
             // txtHorarioFinal
             // 
-            txtHorarioFinal.Format = DateTimePickerFormat.Time;
+            txtHorarioFinal.CustomFormat = "HH:mm";
+            txtHorarioFinal.Format = DateTimePickerFormat.Custom;
             txtHorarioFinal.Location = new Point(278, 117);
             txtHorarioFinal.Name = "txtHorarioFinal";
+            txtHorarioFinal.ShowUpDown = true;
             txtHorarioFinal.Size = new Size(137, 23);
             txtHorarioFinal.TabIndex = 9;
             // 
@@ -140,16 +143,19 @@
             // 
             // cmbContatos
             // 
+            cmbContatos.DisplayMember = "nome";
+            cmbContatos.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbContatos.Enabled = false;
             cmbContatos.FormattingEnabled = true;
-            cmbContatos.Location = new Point(83, 153);
+            cmbContatos.Location = new Point(278, 160);
             cmbContatos.Name = "cmbContatos";
-            cmbContatos.Size = new Size(124, 23);
+            cmbContatos.Size = new Size(137, 23);
             cmbContatos.TabIndex = 10;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(24, 156);
+            label6.Location = new Point(219, 163);
             label6.Name = "label6";
             label6.Size = new Size(53, 15);
             label6.TabIndex = 11;
@@ -179,77 +185,72 @@
             // rdbOnline
             // 
             rdbOnline.AutoSize = true;
-            rdbOnline.Location = new Point(111, 31);
+            rdbOnline.Location = new Point(28, 58);
             rdbOnline.Name = "rdbOnline";
             rdbOnline.Size = new Size(60, 19);
             rdbOnline.TabIndex = 25;
             rdbOnline.TabStop = true;
             rdbOnline.Text = "Online";
             rdbOnline.UseVisualStyleBackColor = true;
+            rdbOnline.CheckedChanged += rdbOnline_CheckedChanged;
             // 
             // rdbPresencial
             // 
             rdbPresencial.AutoSize = true;
-            rdbPresencial.Location = new Point(21, 31);
+            rdbPresencial.Location = new Point(10, 27);
             rdbPresencial.Name = "rdbPresencial";
             rdbPresencial.Size = new Size(78, 19);
             rdbPresencial.TabIndex = 24;
             rdbPresencial.TabStop = true;
             rdbPresencial.Text = "Presencial";
             rdbPresencial.UseVisualStyleBackColor = true;
+            rdbPresencial.CheckedChanged += rdbPresencial_CheckedChanged;
             // 
             // txtLocalOnline
             // 
-            txtLocalOnline.Location = new Point(79, 90);
+            txtLocalOnline.Location = new Point(94, 58);
             txtLocalOnline.Name = "txtLocalOnline";
-            txtLocalOnline.Size = new Size(238, 23);
+            txtLocalOnline.Size = new Size(286, 23);
             txtLocalOnline.TabIndex = 23;
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(10, 90);
-            label8.Name = "label8";
-            label8.Size = new Size(63, 15);
-            label8.TabIndex = 22;
-            label8.Text = "Presencial:";
             // 
             // txtLocalPresencial
             // 
-            txtLocalPresencial.Location = new Point(79, 58);
+            txtLocalPresencial.Location = new Point(94, 26);
             txtLocalPresencial.Name = "txtLocalPresencial";
-            txtLocalPresencial.Size = new Size(237, 23);
+            txtLocalPresencial.Size = new Size(286, 23);
             txtLocalPresencial.TabIndex = 21;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(28, 61);
-            label7.Name = "label7";
-            label7.Size = new Size(45, 15);
-            label7.TabIndex = 20;
-            label7.Text = "Online:";
             // 
             // groupBox1
             // 
             groupBox1.Controls.Add(rdbOnline);
             groupBox1.Controls.Add(rdbPresencial);
-            groupBox1.Controls.Add(label7);
             groupBox1.Controls.Add(txtLocalOnline);
             groupBox1.Controls.Add(txtLocalPresencial);
-            groupBox1.Controls.Add(label8);
-            groupBox1.Location = new Point(29, 190);
+            groupBox1.Location = new Point(29, 198);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(386, 131);
+            groupBox1.Size = new Size(386, 99);
             groupBox1.TabIndex = 21;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Tipo do Local";
+            groupBox1.Text = "Local";
+            // 
+            // chkSelecionarContato
+            // 
+            chkSelecionarContato.AutoSize = true;
+            chkSelecionarContato.Location = new Point(18, 163);
+            chkSelecionarContato.Name = "chkSelecionarContato";
+            chkSelecionarContato.RightToLeft = RightToLeft.Yes;
+            chkSelecionarContato.Size = new Size(188, 19);
+            chkSelecionarContato.TabIndex = 22;
+            chkSelecionarContato.Text = "?Deseja selecionar um Contato";
+            chkSelecionarContato.UseVisualStyleBackColor = true;
+            chkSelecionarContato.CheckedChanged += chkSelecionarContato_CheckedChanged;
             // 
             // TelaCompromissoForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(436, 417);
+            Controls.Add(chkSelecionarContato);
             Controls.Add(groupBox1);
             Controls.Add(btnCancelar);
             Controls.Add(btnGravar);
@@ -297,9 +298,8 @@
         private RadioButton rdbOnline;
         private RadioButton rdbPresencial;
         private TextBox txtLocalOnline;
-        private Label label8;
         private TextBox txtLocalPresencial;
-        private Label label7;
         private GroupBox groupBox1;
+        private CheckBox chkSelecionarContato;
     }
 }

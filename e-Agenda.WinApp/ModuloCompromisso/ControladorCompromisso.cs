@@ -105,25 +105,29 @@ namespace e_Agenda.WinApp.ModuloCompromisso
 
             if (opcaoEscolhida == DialogResult.OK)
             {
-                StatusCompromissoEnum status = telaFiltro.ObterStatus();               
+                StatusCompromissoEnum status = telaFiltro.ObterStatus();
+                List<Compromisso> compromissos = null;
 
                 if (status == StatusCompromissoEnum.Todos)
-                    CarregarCompromissos();
+                {
+                    compromissos = repositorioCompromisso.SelecionarTodos();
+                }
 
                 else if (status == StatusCompromissoEnum.Passados)
                 {
-                    List<Compromisso> compromissosPassados = repositorioCompromisso.SelecionarCompromissosPassados(DateTime.Now);
-
-                    CarregarCompromissos(compromissosPassados);
+                    compromissos = repositorioCompromisso.SelecionarCompromissosPassados(DateTime.Now);                    
                 }
                 else if (status == StatusCompromissoEnum.Futuros)
                 {
                     DateTime dataInicio = telaFiltro.ObterDataInicio();
                     DateTime dataFinal = telaFiltro.ObterDataFinal();
 
-                    List<Compromisso> compromissosFuturos = repositorioCompromisso.SelecionarCompromissosFuturos(dataInicio, dataFinal);
-                    CarregarCompromissos(compromissosFuturos);
+                    compromissos = repositorioCompromisso.SelecionarCompromissosFuturos(dataInicio, dataFinal);                    
                 }
+
+                CarregarCompromissos(compromissos);
+
+                TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {compromissos.Count} compromissos");
             }
         }
 

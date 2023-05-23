@@ -43,9 +43,14 @@ namespace e_Agenda.WinApp.ModuloCompromisso
             txtId.Text = compromissoSelecionado.id.ToString();
             txtAssunto.Text = compromissoSelecionado.assunto;
             txtData.Value = compromissoSelecionado.data;
-            txtHorarioInicio.Value = compromissoSelecionado.data + compromissoSelecionado.horarioInicio;
-            txtHorarioFinal.Value = compromissoSelecionado.data + compromissoSelecionado.horarioFinal;
-            cmbContatos.SelectedItem = compromissoSelecionado.contato;
+            txtHorarioInicio.Value = DateTime.Now.Date.Add(compromissoSelecionado.horarioInicio);
+            txtHorarioFinal.Value = DateTime.Now.Date.Add(compromissoSelecionado.horarioFinal);
+
+            if (compromissoSelecionado.contato != null)
+            {
+                chkSelecionarContato.Checked = true;
+                cmbContatos.SelectedItem = compromissoSelecionado.contato;             
+            }
 
             if (compromissoSelecionado.tipoLocal == TipoLocalEnum.Presencial)
             {
@@ -71,6 +76,26 @@ namespace e_Agenda.WinApp.ModuloCompromisso
 
                 DialogResult = DialogResult.None;
             }
+        }
+
+        private void rdbPresencial_CheckedChanged(object sender, EventArgs e)
+        {
+            txtLocalPresencial.Enabled = true;
+            txtLocalOnline.Enabled = false;
+            txtLocalOnline.Text = "";
+        }
+
+        private void rdbOnline_CheckedChanged(object sender, EventArgs e)
+        {
+            txtLocalOnline.Enabled = true;
+            txtLocalPresencial.Enabled = false;
+            txtLocalPresencial.Text = "";
+        }
+
+        private void chkSelecionarContato_CheckedChanged(object sender, EventArgs e)
+        {
+            cmbContatos.Enabled = !cmbContatos.Enabled;
+            cmbContatos.SelectedIndex = -1;
         }
     }
 }
