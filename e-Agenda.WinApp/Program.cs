@@ -1,3 +1,5 @@
+using e_Agenda.WinApp.ModuloContato;
+
 namespace e_Agenda.WinApp
 {
     internal static class Program

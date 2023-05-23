@@ -40,10 +40,10 @@ namespace e_Agenda.WinApp
             repositorioContato.Inserir(eduardo);
 
             Compromisso c01 = new Compromisso("Entrevista - Caio Henrique", new DateTime(2023, 5, 21), new TimeSpan(9, 0, 0), new TimeSpan(10, 0, 0), caio, "Midilages", TipoLocalEnum.Presencial);
-            Compromisso c02 = new Compromisso("Entrevista - Camile", new DateTime(2023, 5, 22), new TimeSpan(9, 0, 0), new TimeSpan(10, 0, 0), caio, "Midilages", TipoLocalEnum.Presencial);
-            Compromisso c03 = new Compromisso("Entrevista - Davi", new DateTime(2023, 5, 23), new TimeSpan(9, 0, 0), new TimeSpan(10, 0, 0), caio, "Midilages", TipoLocalEnum.Presencial);
-            Compromisso c04 = new Compromisso("Entrevista - Diego", new DateTime(2023, 5, 24), new TimeSpan(9, 0, 0), new TimeSpan(10, 0, 0), caio, "Midilages", TipoLocalEnum.Presencial);
-            Compromisso c05 = new Compromisso("Entrevista - Eduardo", new DateTime(2023, 5, 25), new TimeSpan(9, 0, 0), new TimeSpan(10, 0, 0), caio, "Midilages", TipoLocalEnum.Presencial);
+            Compromisso c02 = new Compromisso("Entrevista - Camile", new DateTime(2023, 5, 22), new TimeSpan(9, 0, 0), new TimeSpan(10, 0, 0), camile, "Midilages", TipoLocalEnum.Presencial);
+            Compromisso c03 = new Compromisso("Entrevista - Davi", new DateTime(2023, 5, 23), new TimeSpan(9, 0, 0), new TimeSpan(10, 0, 0), davi, "Midilages", TipoLocalEnum.Presencial);
+            Compromisso c04 = new Compromisso("Entrevista - Diego", new DateTime(2023, 5, 24), new TimeSpan(9, 0, 0), new TimeSpan(10, 0, 0), diego, "Midilages", TipoLocalEnum.Presencial);
+            Compromisso c05 = new Compromisso("Entrevista - Eduardo", new DateTime(2023, 5, 25), new TimeSpan(9, 0, 0), new TimeSpan(10, 0, 0), eduardo, "Midilages", TipoLocalEnum.Presencial);
 
             repositorioCompromisso.Inserir(c01);
             repositorioCompromisso.Inserir(c02);

@@ -49,5 +49,16 @@ namespace e_Agenda.WinApp.ModuloContato
 
             return erros.ToArray();
         }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Contato contato &&
+                   id == contato.id &&
+                   nome == contato.nome &&
+                   telefone == contato.telefone &&
+                   email == contato.email &&
+                   cargo == contato.cargo &&
+                   empresa == contato.empresa;
+        }
     }
 }

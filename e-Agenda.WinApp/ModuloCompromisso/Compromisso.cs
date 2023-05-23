@@ -1,6 +1,5 @@
 ﻿using e_Agenda.WinApp.Compartilhado;
 using e_Agenda.WinApp.ModuloContato;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace e_Agenda.WinApp.ModuloCompromisso
 {
@@ -66,6 +65,20 @@ namespace e_Agenda.WinApp.ModuloCompromisso
                 erros.Add("O campo 'assunto' é obrigatório");            
 
             return erros.ToArray();
+        }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Compromisso compromisso &&
+                   id == compromisso.id &&
+                   assunto == compromisso.assunto &&
+                   data == compromisso.data &&
+                   horarioInicio.Equals(compromisso.horarioInicio) &&
+                   horarioFinal.Equals(compromisso.horarioFinal) &&
+                   EqualityComparer<Contato>.Default.Equals(contato, compromisso.contato) &&
+                   localPresencial == compromisso.localPresencial &&
+                   localOnline == compromisso.localOnline &&
+                   tipoLocal == compromisso.tipoLocal;
         }
     }
 }
