@@ -4,13 +4,18 @@ namespace e_Agenda.WinApp.ModuloTarefa
 {
     public partial class TelaTarefaForm : Form
     {
-        public TelaTarefaForm()
+        public TelaTarefaForm(bool edicaoDeTarefa)
         {
             InitializeComponent();
 
             this.ConfigurarDialog();
 
             CarregarPrioridades();
+
+            if (edicaoDeTarefa)
+            {
+                txtDataCriacao.Enabled = false;
+            }
         }
 
         private void CarregarPrioridades()
@@ -44,7 +49,7 @@ namespace e_Agenda.WinApp.ModuloTarefa
 
             cmbPrioridade.SelectedItem = tarefaSelecionada.prioridade;
 
-            txtDataCriacao.Value = tarefaSelecionada.dataCriacao;
+            txtDataCriacao.Value = tarefaSelecionada.dataCriacao;           
         }
     }
 }

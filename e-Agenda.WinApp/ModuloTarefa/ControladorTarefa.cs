@@ -22,7 +22,7 @@ namespace e_Agenda.WinApp.ModuloTarefa
         {
             Tarefa tarefaSelecionada = listagemTarefas.ObterTarefaSelecionada();
 
-            TelaTarefaForm telaTarefa = new TelaTarefaForm();
+            TelaTarefaForm telaTarefa = new TelaTarefaForm(edicaoDeTarefa: true);
 
             telaTarefa.ConfigurarTela(tarefaSelecionada);
 
@@ -45,7 +45,7 @@ namespace e_Agenda.WinApp.ModuloTarefa
 
         public override void Inserir()
         {
-            TelaTarefaForm telaTarefa = new TelaTarefaForm();
+            TelaTarefaForm telaTarefa = new TelaTarefaForm(edicaoDeTarefa: false);
 
             DialogResult opcaoEscolhida = telaTarefa.ShowDialog();
 
