@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using e_Agenda.WinApp.Compartilhado;
 
 namespace e_Agenda.WinApp.ModuloTarefa
 {
@@ -15,6 +7,44 @@ namespace e_Agenda.WinApp.ModuloTarefa
         public TelaTarefaForm()
         {
             InitializeComponent();
+
+            this.ConfigurarDialog();
+
+            CarregarPrioridades();
+        }
+
+        private void CarregarPrioridades()
+        {
+            PrioridadeTarefaEnum[] prioridades = Enum.GetValues<PrioridadeTarefaEnum>();
+
+            foreach (PrioridadeTarefaEnum prioridade in prioridades)
+            {
+                cmbPrioridade.Items.Add(prioridade);
+            }
+        }
+
+        public Tarefa ObterTarefa()
+        {
+            int id = Convert.ToInt32( txtId.Text );
+
+            string titulo = txtTitulo.Text;
+
+            PrioridadeTarefaEnum prioridade = (PrioridadeTarefaEnum)cmbPrioridade.SelectedItem;
+
+            DateTime dataCriacao = txtDataCriacao.Value;
+
+            return new Tarefa(id, titulo, prioridade, dataCriacao);
+        }
+
+        public void ConfigurarTela(Tarefa tarefaSelecionada)
+        {
+            txtId.Text = tarefaSelecionada.id.ToString();
+
+            txtTitulo.Text = tarefaSelecionada.titulo;
+
+            cmbPrioridade.SelectedItem = tarefaSelecionada.prioridade;
+
+            txtDataCriacao.Value = tarefaSelecionada.dataCriacao;
         }
     }
 }

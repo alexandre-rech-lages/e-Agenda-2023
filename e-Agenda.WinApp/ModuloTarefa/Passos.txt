@@ -1,0 +1,25 @@
+﻿Módulo de Tarefas
+	
+	1 - TelaTarefaForm -> Inserir Tarefa [ok]
+		
+		-> Id, Nome, Prioridade
+
+	2 - ListagemTarefaControl - Visualizar Tarefas [ok]
+
+		-> Id, Nome, Prioridade
+
+	3 - TelaTarefaForm -> Editar Tarefa [ok]
+		
+		-> Id, Nome, Prioridade
+	
+	4 - Excluir Tarefa
+
+	5 - TelaCadastroItensTarefaForm -> Cadastrar dos Itens
+
+	6 - TelaAtualizarItensTarefaForm -> Atualização dos Itens
+
+	7 - Calcular o Percentual Concluído da Tarefa
+
+	8 - TelaFiltroTarefaForm -> Filtrar Tarefas
+
+	9 - ListagemTarefaControl -> Visualizar Tarefas Ordenadas por Prioridade 

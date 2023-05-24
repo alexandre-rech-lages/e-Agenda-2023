@@ -1,4 +1,6 @@
-﻿namespace e_Agenda.WinApp.ModuloContato
+﻿using e_Agenda.WinApp.Compartilhado;
+
+namespace e_Agenda.WinApp.ModuloContato
 {
     public partial class TelaContatoForm : Form
     {
@@ -7,6 +9,7 @@
         public TelaContatoForm()
         {
             InitializeComponent();
+            this.ConfigurarDialog();
         }
 
         public Contato Contato

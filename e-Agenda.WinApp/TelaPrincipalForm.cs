@@ -10,6 +10,7 @@ namespace e_Agenda.WinApp
         private ControladorBase controlador;
         private RepositorioContato repositorioContato = new RepositorioContato(new List<Contato>());
         private RepositorioCompromisso repositorioCompromisso = new RepositorioCompromisso(new List<Compromisso>());
+        private RepositorioTarefa repositorioTarefa = new RepositorioTarefa(new List<Tarefa>());
 
         private static TelaPrincipalForm telaPrincipal;
 
@@ -84,7 +85,7 @@ namespace e_Agenda.WinApp
 
         private void tarefasMenuItem_Click(object sender, EventArgs e)
         {
-            controlador = new ControladorTarefa();
+            controlador = new ControladorTarefa(repositorioTarefa);
 
             ConfigurarTelaPrincipal(controlador);
         }
@@ -93,9 +94,14 @@ namespace e_Agenda.WinApp
         {
             labelTipoCadastro.Text = controladorBase.ObterTipoCadastro();
 
-            ConfigurarToolTips(controlador);
+            ConfigurarBarraFerramentas(controlador);
 
             ConfigurarListagem(controlador);
+        }
+
+        private void ConfigurarBarraFerramentas(ControladorBase controlador)
+        {
+            ConfigurarToolTips(controlador);
         }
 
         private void ConfigurarListagem(ControladorBase controladorBase)
@@ -108,6 +114,8 @@ namespace e_Agenda.WinApp
 
             panelRegistros.Controls.Add(listagem);
         }
+
+       
 
         private void ConfigurarToolTips(ControladorBase controlador)
         {

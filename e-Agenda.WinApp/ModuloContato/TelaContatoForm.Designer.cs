@@ -183,13 +183,8 @@
             Controls.Add(txtId);
             Controls.Add(label1);
             Controls.Add(btnCancelar);
-            Controls.Add(btnGravar);
-            FormBorderStyle = FormBorderStyle.FixedDialog;
-            MaximizeBox = false;
-            MinimizeBox = false;
-            Name = "TelaContatoForm";
-            ShowIcon = false;
-            StartPosition = FormStartPosition.CenterScreen;
+            Controls.Add(btnGravar);           
+            Name = "TelaContatoForm";          
             Text = "Cadastro de Contatos";
             ResumeLayout(false);
             PerformLayout();
