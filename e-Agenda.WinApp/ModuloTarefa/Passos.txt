@@ -12,14 +12,14 @@
 		
 		-> Id, Nome, Prioridade
 	
-	4 - Excluir Tarefa
+	4 - Excluir Tarefa [ok]
 
-	5 - TelaCadastroItensTarefaForm -> Cadastrar dos Itens
+	5 - TelaCadastroItensTarefaForm -> Cadastro dos Itens [ok]
 
-	6 - TelaAtualizarItensTarefaForm -> Atualização dos Itens
+	6 - TelaAtualizarItensTarefaForm -> Atualização dos Itens [ok]
 
-	7 - Calcular o Percentual Concluído da Tarefa
+	7 - Calcular o Percentual Concluído da Tarefa [ok]
 
-	8 - TelaFiltroTarefaForm -> Filtrar Tarefas
+	8 - TelaFiltroTarefaForm -> Filtrar Tarefas [ok]
 
-	9 - ListagemTarefaControl -> Visualizar Tarefas Ordenadas por Prioridade 
+	9 - ListagemTarefaControl -> Visualizar Tarefas Ordenadas por Prioridade [ok]

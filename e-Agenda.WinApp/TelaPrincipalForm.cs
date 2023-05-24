@@ -51,6 +51,50 @@ namespace e_Agenda.WinApp
             repositorioCompromisso.Inserir(c03);
             repositorioCompromisso.Inserir(c04);
             repositorioCompromisso.Inserir(c05);
+
+            Tarefa t1 = new Tarefa(1, "Preparar Apresentação 1", PrioridadeTarefaEnum.Alta, DateTime.Now);
+
+            t1.AdicionarItem(new ItemTarefa("a"));
+            t1.AdicionarItem(new ItemTarefa("b"));
+            t1.AdicionarItem(new ItemTarefa("c"));
+
+            Tarefa t2 = new Tarefa(1, "Preparar Apresentação 2 ", PrioridadeTarefaEnum.Alta, DateTime.Now);
+
+            t2.AdicionarItem(new ItemTarefa("a"));
+            t2.AdicionarItem(new ItemTarefa("b"));
+            t2.AdicionarItem(new ItemTarefa("c"));
+
+
+            Tarefa t3 = new Tarefa(1, "Preparar Apresentação 3 ", PrioridadeTarefaEnum.Baixa, DateTime.Now);
+
+            t3.AdicionarItem(new ItemTarefa("a"));
+            t3.AdicionarItem(new ItemTarefa("b"));
+            t3.AdicionarItem(new ItemTarefa("c"));
+
+            Tarefa t4 = new Tarefa(1, "Preparar Apresentação 4 ", PrioridadeTarefaEnum.Alta, DateTime.Now);
+
+            t4.AdicionarItem(new ItemTarefa("a"));
+            t4.AdicionarItem(new ItemTarefa("b"));
+            t4.AdicionarItem(new ItemTarefa("c"));
+
+            Tarefa t5 = new Tarefa(1, "Preparar Apresentação 5", PrioridadeTarefaEnum.Normal, DateTime.Now);
+
+            t5.AdicionarItem(new ItemTarefa("a"));
+            t5.AdicionarItem(new ItemTarefa("b"));
+            t5.AdicionarItem(new ItemTarefa("c"));
+
+            Tarefa t6 = new Tarefa(1, "Preparar Apresentação 6", PrioridadeTarefaEnum.Baixa, DateTime.Now);
+
+            t6.AdicionarItem(new ItemTarefa("a"));
+            t6.AdicionarItem(new ItemTarefa("b"));
+            t6.AdicionarItem(new ItemTarefa("c"));
+
+            repositorioTarefa.Inserir(t1);
+            repositorioTarefa.Inserir(t2);
+            repositorioTarefa.Inserir(t3);
+            repositorioTarefa.Inserir(t4);
+            repositorioTarefa.Inserir(t5);
+            repositorioTarefa.Inserir(t6);
         }
 
         public void AtualizarRodape(string mensagem)
@@ -115,7 +159,7 @@ namespace e_Agenda.WinApp
             panelRegistros.Controls.Add(listagem);
         }
 
-       
+
 
         private void ConfigurarToolTips(ControladorBase controlador)
         {
@@ -142,6 +186,16 @@ namespace e_Agenda.WinApp
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
             controlador.Filtrar();
+        }
+
+        private void btnAdicionar_Click(object sender, EventArgs e)
+        {
+            controlador.Adicionar();
+        }
+
+        private void btnConcluirItens_Click(object sender, EventArgs e)
+        {
+            controlador.ConcluirItens();
         }
     }
 }
