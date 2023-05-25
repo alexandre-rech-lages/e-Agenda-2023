@@ -136,6 +136,7 @@ namespace e_Agenda.WinApp
 
         private void ConfigurarTelaPrincipal(ControladorBase controladorBase)
         {
+
             labelTipoCadastro.Text = controladorBase.ObterTipoCadastro();
 
             ConfigurarBarraFerramentas(controlador);
@@ -145,6 +146,8 @@ namespace e_Agenda.WinApp
 
         private void ConfigurarBarraFerramentas(ControladorBase controlador)
         {
+            barraFerramentas.Enabled = true;
+
             ConfigurarToolTips(controlador);
         }
 
@@ -166,6 +169,16 @@ namespace e_Agenda.WinApp
             btnInserir.ToolTipText = controlador.ToolTipInserir;
             btnEditar.ToolTipText = controlador.ToolTipEditar;
             btnExcluir.ToolTipText = controlador.ToolTipExcluir;
+            btnFiltrar.ToolTipText = controlador.ToolTipFiltrar;
+            btnAdicionarItens.ToolTipText = controlador.ToolTipAdicionarItens;
+            btnConcluirItens.ToolTipText = controlador.ToolTipConcluirItens;
+
+            btnInserir.Enabled = controlador.InserirHabilitado;
+            btnEditar.Enabled = controlador.EditarHabilitado;
+            btnExcluir.Enabled = controlador.ExcluirHabilitado;
+            btnFiltrar.Enabled = controlador.FiltrarHabilitado;
+            btnAdicionarItens.Enabled = controlador.AdicionarItensHabilitado;
+            btnConcluirItens.Enabled = controlador.ConcluirItensHabilitado;
         }
 
         private void btnInserir_Click(object sender, EventArgs e)

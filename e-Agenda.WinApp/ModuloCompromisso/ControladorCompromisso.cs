@@ -21,6 +21,10 @@ namespace e_Agenda.WinApp.ModuloCompromisso
 
         public override string ToolTipExcluir => "Excluir Compromisso existente";
 
+        public override string ToolTipFiltrar => "Filtrar Compromissos";
+
+        public override bool FiltrarHabilitado => true;
+
         public override void Inserir()
         {
             List<Contato> contatos = repositorioContato.SelecionarTodos();

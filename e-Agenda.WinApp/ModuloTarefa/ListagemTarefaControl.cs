@@ -4,7 +4,7 @@
     {
         public ListagemTarefaControl()
         {
-            InitializeComponent();           
+            InitializeComponent();
         }
 
         public void AtualizarRegistros(List<Tarefa> tarefas)
