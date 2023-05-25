@@ -1,4 +1,3 @@
-using e_Agenda.WinApp.Compartilhado;
 using e_Agenda.WinApp.ModuloCompromisso;
 using e_Agenda.WinApp.ModuloContato;
 using e_Agenda.WinApp.ModuloTarefa;
@@ -136,7 +135,6 @@ namespace e_Agenda.WinApp
 
         private void ConfigurarTelaPrincipal(ControladorBase controladorBase)
         {
-
             labelTipoCadastro.Text = controladorBase.ObterTipoCadastro();
 
             ConfigurarBarraFerramentas(controlador);
@@ -149,6 +147,8 @@ namespace e_Agenda.WinApp
             barraFerramentas.Enabled = true;
 
             ConfigurarToolTips(controlador);
+
+            ConfigurarEstados(controlador);
         }
 
         private void ConfigurarListagem(ControladorBase controladorBase)
@@ -171,8 +171,11 @@ namespace e_Agenda.WinApp
             btnExcluir.ToolTipText = controlador.ToolTipExcluir;
             btnFiltrar.ToolTipText = controlador.ToolTipFiltrar;
             btnAdicionarItens.ToolTipText = controlador.ToolTipAdicionarItens;
-            btnConcluirItens.ToolTipText = controlador.ToolTipConcluirItens;
+            btnConcluirItens.ToolTipText = controlador.ToolTipConcluirItens;            
+        }
 
+        private void ConfigurarEstados(ControladorBase controlador)
+        {
             btnInserir.Enabled = controlador.InserirHabilitado;
             btnEditar.Enabled = controlador.EditarHabilitado;
             btnExcluir.Enabled = controlador.ExcluirHabilitado;

@@ -1,7 +1,4 @@
-﻿using e_Agenda.WinApp.Compartilhado;
-using Microsoft.Win32;
-
-namespace e_Agenda.WinApp.ModuloTarefa
+﻿namespace e_Agenda.WinApp.ModuloTarefa
 {
     public class ControladorTarefa : ControladorBase
     {
