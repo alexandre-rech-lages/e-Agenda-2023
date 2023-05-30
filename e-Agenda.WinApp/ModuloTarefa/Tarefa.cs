@@ -1,5 +1,6 @@
 ﻿namespace e_Agenda.WinApp.ModuloTarefa
 {
+    [Serializable]
     public class Tarefa : EntidadeBase<Tarefa>
     {
         public string titulo;

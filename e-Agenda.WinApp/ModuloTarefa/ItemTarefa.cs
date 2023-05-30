@@ -1,5 +1,6 @@
 ﻿namespace e_Agenda.WinApp.ModuloTarefa
 {
+    [Serializable]
     public class ItemTarefa
     {
         public string titulo;

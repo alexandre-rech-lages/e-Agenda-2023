@@ -2,7 +2,7 @@
 
 namespace e_Agenda.WinApp.ModuloCompromisso
 {
-    public class RepositorioCompromisso : RepositorioBase<Compromisso>
+    public class RepositorioCompromisso : RepositorioEmMemoriaBase<Compromisso>
     {
         public RepositorioCompromisso(List<Compromisso> compromissos)
         {

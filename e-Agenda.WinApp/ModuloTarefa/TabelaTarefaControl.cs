@@ -45,6 +45,8 @@
 
         public void AtualizarRegistros(List<Tarefa> tarefas)
         {
+            grid.Rows.Clear();
+
             foreach (Tarefa tarefa in tarefas)
             {
                 grid.Rows.Add(tarefa.id, tarefa.titulo, tarefa.prioridade, tarefa.percentualConcluido);

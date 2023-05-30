@@ -1,9 +1,10 @@
 ﻿namespace e_Agenda.WinApp.ModuloTarefa
 {
-    public class RepositorioTarefa : RepositorioBase<Tarefa>
+
+    public class RepositorioTarefaEmMemoria : RepositorioEmMemoriaBase<Tarefa>, IRepositorioTarefa
     {
 
-        public RepositorioTarefa(List<Tarefa> tarefas)
+        public RepositorioTarefaEmMemoria(List<Tarefa> tarefas)
         { 
             listaRegistros = tarefas;
         }
