@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="e_Agenda.WinApp.ModuloDespesa.Despesa">
+    <Position X="6.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAQAAAABQAAEAAQAAAgAAA=</HashCode>
+      <FileName>ModuloDespesa\Despesa.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="categorias" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="e_Agenda.WinApp.ModuloDespesa.Categoria">
+    <Position X="3.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAEAAgAAA=</HashCode>
+      <FileName>ModuloDespesa\Categoria.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="despesas" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

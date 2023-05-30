@@ -37,8 +37,8 @@ namespace e_Agenda.WinApp.ModuloCompromisso
 
                 repositorioCompromisso.Inserir(compromisso);
 
-                CarregarCompromissos();
             }
+            CarregarCompromissos();
         }
 
         public override void Editar()
@@ -68,8 +68,8 @@ namespace e_Agenda.WinApp.ModuloCompromisso
 
                 repositorioCompromisso.Editar(compromisso.id, compromisso);
 
-                CarregarCompromissos();
             }
+            CarregarCompromissos();
         }
 
         public override void Excluir()
@@ -97,8 +97,8 @@ namespace e_Agenda.WinApp.ModuloCompromisso
             {
                 repositorioCompromisso.Excluir(compromissoSelecionado);
 
-                CarregarCompromissos();
             }
+            CarregarCompromissos();
         }
 
         public override void Filtrar()
@@ -118,14 +118,14 @@ namespace e_Agenda.WinApp.ModuloCompromisso
 
                 else if (status == StatusCompromissoEnum.Passados)
                 {
-                    compromissos = repositorioCompromisso.SelecionarCompromissosPassados(DateTime.Now);                    
+                    compromissos = repositorioCompromisso.SelecionarCompromissosPassados(DateTime.Now);
                 }
                 else if (status == StatusCompromissoEnum.Futuros)
                 {
                     DateTime dataInicio = telaFiltro.ObterDataInicio();
                     DateTime dataFinal = telaFiltro.ObterDataFinal();
 
-                    compromissos = repositorioCompromisso.SelecionarCompromissosFuturos(dataInicio, dataFinal);                    
+                    compromissos = repositorioCompromisso.SelecionarCompromissosFuturos(dataInicio, dataFinal);
                 }
 
                 CarregarCompromissos(compromissos);

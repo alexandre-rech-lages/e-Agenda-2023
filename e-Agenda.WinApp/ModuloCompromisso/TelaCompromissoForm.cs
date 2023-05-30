@@ -1,5 +1,4 @@
-﻿using e_Agenda.WinApp.Compartilhado;
-using e_Agenda.WinApp.ModuloContato;
+﻿using e_Agenda.WinApp.ModuloContato;
 
 namespace e_Agenda.WinApp.ModuloCompromisso
 {
@@ -33,17 +32,16 @@ namespace e_Agenda.WinApp.ModuloCompromisso
             TimeSpan horarioFinal = txtHorarioFinal.Value.TimeOfDay;
 
             TipoLocalEnum tipo = rdbOnline.Checked ? TipoLocalEnum.Online : TipoLocalEnum.Presencial;
+            string local = rdbOnline.Checked ? txtLocalOnline.Text : txtLocalPresencial.Text;
 
             Contato contato = (Contato)cmbContatos.SelectedItem;
 
-            string local;
-            if (rdbOnline.Checked)
-                local = txtLocalOnline.Text;
-            else
-                local = txtLocalPresencial.Text;
+            Compromisso compromisso = new Compromisso(id, assunto, data, horarioInicio, horarioFinal, contato, local, tipo);
 
+            if (id > 0)
+                compromisso.id = id;
 
-            return new Compromisso(assunto, data, horarioInicio, horarioFinal, contato, local, tipo);
+            return compromisso;
         }
 
         public void ConfigurarTela(Compromisso compromissoSelecionado)
@@ -57,7 +55,7 @@ namespace e_Agenda.WinApp.ModuloCompromisso
             if (compromissoSelecionado.contato != null)
             {
                 chkSelecionarContato.Checked = true;
-                cmbContatos.SelectedItem = compromissoSelecionado.contato;             
+                cmbContatos.SelectedItem = compromissoSelecionado.contato;
             }
 
             if (compromissoSelecionado.tipoLocal == TipoLocalEnum.Presencial)

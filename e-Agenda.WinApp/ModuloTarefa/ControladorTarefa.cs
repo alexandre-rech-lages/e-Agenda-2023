@@ -31,6 +31,21 @@
 
         public override bool ConcluirItensHabilitado => true;
 
+        public override void Inserir()
+        {
+            TelaTarefaForm telaTarefa = new TelaTarefaForm(edicaoDeTarefa: false);
+
+            DialogResult opcaoEscolhida = telaTarefa.ShowDialog();
+
+            if (opcaoEscolhida == DialogResult.OK)
+            {
+                Tarefa novaTarefa = telaTarefa.ObterTarefa();
+
+                repositorioTarefa.Inserir(novaTarefa);
+
+            }
+            CarregarTarefas();
+        }
 
         public override void Editar()
         {
@@ -55,15 +70,8 @@
 
                 repositorioTarefa.Editar(tarefa.id, tarefa);
 
-                CarregarTarefas();
             }
-        }
-
-        private Tarefa ObterTarefaSelecionada()
-        {
-            int id = tabelaTarefas.ObterIdSelecionado();
-
-            return repositorioTarefa.SelecionarPorId(id);
+            CarregarTarefas();
         }
 
         public override void Excluir()
@@ -83,22 +91,6 @@
             if (opcaoEscolhida == DialogResult.OK)
             {
                 repositorioTarefa.Excluir(tarefaSelecionada);
-
-                CarregarTarefas();
-            }
-        }
-
-        public override void Inserir()
-        {
-            TelaTarefaForm telaTarefa = new TelaTarefaForm(edicaoDeTarefa: false);
-
-            DialogResult opcaoEscolhida = telaTarefa.ShowDialog();
-
-            if (opcaoEscolhida == DialogResult.OK)
-            {
-                Tarefa novaTarefa = telaTarefa.ObterTarefa();
-
-                repositorioTarefa.Inserir(novaTarefa);
 
                 CarregarTarefas();
             }
@@ -183,7 +175,7 @@
                 StatusTarefaEnum status = telaFiltroTarefa.ObterFiltroTarefa();
 
                 switch (status)
-                {                   
+                {
                     case StatusTarefaEnum.Pendentes:
                         tarefas = repositorioTarefa.SelecionarPendentes();
                         break;
@@ -201,6 +193,28 @@
             }
         }
 
+        public override UserControl ObterListagem()
+        {
+            if (tabelaTarefas == null)
+                tabelaTarefas = new TabelaTarefaControl();
+
+            CarregarTarefas();
+
+            return tabelaTarefas;
+        }
+
+        public override string ObterTipoCadastro()
+        {
+            return "Cadastro de Tarefas";
+        }
+
+        private Tarefa ObterTarefaSelecionada()
+        {
+            int id = tabelaTarefas.ObterIdSelecionado();
+
+            return repositorioTarefa.SelecionarPorId(id);
+        }
+
         private void CarregarTarefas(List<Tarefa> tarefas)
         {
             tabelaTarefas.AtualizarRegistros(tarefas);
@@ -215,21 +229,6 @@
             tabelaTarefas.AtualizarRegistros(tarefas);
 
             TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {tarefas.Count} tarefa(s)");
-        }
-
-        public override UserControl ObterListagem()
-        {            
-            if (tabelaTarefas ==  null)
-                tabelaTarefas = new TabelaTarefaControl();
-
-            CarregarTarefas();
-
-            return tabelaTarefas;
-        }
-
-        public override string ObterTipoCadastro()
-        {
-            return "Cadastro de Tarefas";
         }
     }
 }

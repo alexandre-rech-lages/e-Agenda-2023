@@ -75,21 +75,21 @@
             // contatosMenuItem
             // 
             contatosMenuItem.Name = "contatosMenuItem";
-            contatosMenuItem.Size = new Size(154, 22);
+            contatosMenuItem.Size = new Size(180, 22);
             contatosMenuItem.Text = "Contatos";
             contatosMenuItem.Click += contatosMenuItem_Click;
             // 
             // compromissosMenuItem
             // 
             compromissosMenuItem.Name = "compromissosMenuItem";
-            compromissosMenuItem.Size = new Size(154, 22);
+            compromissosMenuItem.Size = new Size(180, 22);
             compromissosMenuItem.Text = "Compromissos";
             compromissosMenuItem.Click += compromissosMenuItem_Click;
             // 
             // tarefasMenuItem
             // 
             tarefasMenuItem.Name = "tarefasMenuItem";
-            tarefasMenuItem.Size = new Size(154, 22);
+            tarefasMenuItem.Size = new Size(180, 22);
             tarefasMenuItem.Text = "Tarefas";
             tarefasMenuItem.Click += tarefasMenuItem_Click;
             // 
@@ -97,20 +97,21 @@
             // 
             despesasToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { despesasMenuItem, categoriasMenuItem });
             despesasToolStripMenuItem.Name = "despesasToolStripMenuItem";
-            despesasToolStripMenuItem.Size = new Size(154, 22);
+            despesasToolStripMenuItem.Size = new Size(180, 22);
             despesasToolStripMenuItem.Text = "Despesas";
             // 
             // despesasMenuItem
             // 
             despesasMenuItem.Name = "despesasMenuItem";
-            despesasMenuItem.Size = new Size(130, 22);
+            despesasMenuItem.Size = new Size(180, 22);
             despesasMenuItem.Text = "Despesas";
             // 
             // categoriasMenuItem
             // 
             categoriasMenuItem.Name = "categoriasMenuItem";
-            categoriasMenuItem.Size = new Size(130, 22);
+            categoriasMenuItem.Size = new Size(180, 22);
             categoriasMenuItem.Text = "Categorias";
+            categoriasMenuItem.Click += categoriasMenuItem_Click;
             // 
             // relatóriosToolStripMenuItem
             // 

@@ -1,40 +1,5 @@
-﻿using e_Agenda.WinApp.Compartilhado;
-
-namespace e_Agenda.WinApp.ModuloTarefa
+﻿namespace e_Agenda.WinApp.ModuloTarefa
 {
-    public class ItemTarefa
-    {
-        public string titulo;
-        public bool concluido;
-
-        public ItemTarefa(string titulo)
-        {
-            this.titulo = titulo;
-        }
-
-        public override string ToString()
-        {
-            return titulo;
-        }
-
-        public void Concluir()
-        {
-            concluido = true;
-        }
-
-        public override bool Equals(object? obj)
-        {
-            return obj is ItemTarefa tarefa &&
-                   titulo == tarefa.titulo &&
-                   concluido == tarefa.concluido;
-        }
-
-        public void Desmarcar()
-        {
-            concluido = false;
-        }
-    }
-
     public class Tarefa : EntidadeBase<Tarefa>
     {
         public string titulo;
@@ -46,6 +11,14 @@ namespace e_Agenda.WinApp.ModuloTarefa
         public Tarefa(int id, string titulo, PrioridadeTarefaEnum prioridade, DateTime dataCriacao)
         {
             this.id = id;
+            this.titulo = titulo;
+            this.prioridade = prioridade;
+            this.dataCriacao = dataCriacao;
+            this.items = new List<ItemTarefa>();
+        }
+
+        public Tarefa(string titulo, PrioridadeTarefaEnum prioridade, DateTime dataCriacao)
+        {
             this.titulo = titulo;
             this.prioridade = prioridade;
             this.dataCriacao = dataCriacao;

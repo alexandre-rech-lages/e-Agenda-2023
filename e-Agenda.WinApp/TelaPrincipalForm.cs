@@ -1,5 +1,6 @@
 using e_Agenda.WinApp.ModuloCompromisso;
 using e_Agenda.WinApp.ModuloContato;
+using e_Agenda.WinApp.ModuloDespesa;
 using e_Agenda.WinApp.ModuloTarefa;
 
 namespace e_Agenda.WinApp
@@ -10,12 +11,14 @@ namespace e_Agenda.WinApp
         private RepositorioContato repositorioContato = new RepositorioContato(new List<Contato>());
         private RepositorioCompromisso repositorioCompromisso = new RepositorioCompromisso(new List<Compromisso>());
         private RepositorioTarefa repositorioTarefa = new RepositorioTarefa(new List<Tarefa>());
+        private RepositorioCategoria repositorioCategoria = new RepositorioCategoria(new List<Categoria>());
 
         private static TelaPrincipalForm telaPrincipal;
 
         public TelaPrincipalForm()
         {
             InitializeComponent();
+
             telaPrincipal = this;
 
             PopularRepositorios();
@@ -133,6 +136,13 @@ namespace e_Agenda.WinApp
             ConfigurarTelaPrincipal(controlador);
         }
 
+        private void categoriasMenuItem_Click(object sender, EventArgs e)
+        {
+            controlador = new ControladorCategoria(repositorioCategoria);
+
+            ConfigurarTelaPrincipal(controlador);
+        }
+
         private void ConfigurarTelaPrincipal(ControladorBase controladorBase)
         {
             labelTipoCadastro.Text = controladorBase.ObterTipoCadastro();
@@ -171,7 +181,7 @@ namespace e_Agenda.WinApp
             btnExcluir.ToolTipText = controlador.ToolTipExcluir;
             btnFiltrar.ToolTipText = controlador.ToolTipFiltrar;
             btnAdicionarItens.ToolTipText = controlador.ToolTipAdicionarItens;
-            btnConcluirItens.ToolTipText = controlador.ToolTipConcluirItens;            
+            btnConcluirItens.ToolTipText = controlador.ToolTipConcluirItens;
         }
 
         private void ConfigurarEstados(ControladorBase controlador)
@@ -213,5 +223,7 @@ namespace e_Agenda.WinApp
         {
             controlador.ConcluirItens();
         }
+
+       
     }
 }

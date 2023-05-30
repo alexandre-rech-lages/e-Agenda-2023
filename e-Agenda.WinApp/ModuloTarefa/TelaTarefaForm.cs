@@ -1,6 +1,4 @@
-﻿using e_Agenda.WinApp.Compartilhado;
-
-namespace e_Agenda.WinApp.ModuloTarefa
+﻿namespace e_Agenda.WinApp.ModuloTarefa
 {
     public partial class TelaTarefaForm : Form
     {
@@ -37,8 +35,13 @@ namespace e_Agenda.WinApp.ModuloTarefa
             PrioridadeTarefaEnum prioridade = (PrioridadeTarefaEnum)cmbPrioridade.SelectedItem;
 
             DateTime dataCriacao = txtDataCriacao.Value;
+                        
+            Tarefa tarefa = new Tarefa(id, titulo, prioridade, dataCriacao);
 
-            return new Tarefa(id, titulo, prioridade, dataCriacao);
+            if (id > 0)
+                tarefa.id = id;
+
+            return tarefa;
         }
 
         public void ConfigurarTela(Tarefa tarefaSelecionada)

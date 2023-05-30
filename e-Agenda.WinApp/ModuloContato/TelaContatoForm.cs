@@ -1,36 +1,17 @@
-﻿using e_Agenda.WinApp.Compartilhado;
-
-namespace e_Agenda.WinApp.ModuloContato
+﻿namespace e_Agenda.WinApp.ModuloContato
 {
     public partial class TelaContatoForm : Form
     {
-        private Contato contato;
-
         public TelaContatoForm()
         {
             InitializeComponent();
             this.ConfigurarDialog();
         }
 
-        public Contato Contato
+        public Contato ObterContato()
         {
-            set
-            {
-                txtId.Text = value.id.ToString();
-                txtNome.Text = value.nome;
-                txtTelefone.Text = value.telefone;
-                txtEmail.Text = value.email;
-                txtCargo.Text = value.cargo;
-                txtEmpresa.Text = value.empresa;
-            }
-            get
-            {
-                return contato;
-            }
-        }
+            int id = Convert.ToInt32(txtId.Text);
 
-        private void btnGravar_Click(object sender, EventArgs e)
-        {
             string nome = txtNome.Text;
 
             string telefone = txtTelefone.Text;
@@ -41,10 +22,32 @@ namespace e_Agenda.WinApp.ModuloContato
 
             string empresa = txtEmpresa.Text;
 
-            contato = new Contato(nome, telefone, email, cargo, empresa);
+            Contato contato = new Contato(nome, telefone, email, cargo, empresa);
 
-            if (txtId.Text != "0")
-                contato.id = Convert.ToInt32(txtId.Text);
+            if (id > 0) 
+                contato.id = id;
+
+            return contato;                            
+        }
+
+        public void ConfigurarTela(Contato contato)
+        {
+            txtId.Text = contato.id.ToString();
+
+            txtNome.Text = contato.nome;
+
+            txtTelefone.Text = contato.telefone;
+            
+            txtEmail.Text = contato.email;
+
+            txtCargo.Text = contato.cargo;
+
+            txtEmpresa.Text = contato.empresa;
+        }
+
+        private void btnGravar_Click(object sender, EventArgs e)
+        {
+            Contato contato = ObterContato();
 
             string[] erros = contato.Validar();
 

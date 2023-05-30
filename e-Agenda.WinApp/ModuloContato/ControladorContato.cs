@@ -24,12 +24,11 @@
 
             if (opcaoEscolhida == DialogResult.OK)
             {
-                Contato contato = telaContato.Contato;
+                Contato contato = telaContato.ObterContato();
 
-                repositorioContato.Inserir(contato);
-
-                CarregarContatos();
+                repositorioContato.Inserir(contato);                
             }
+            CarregarContatos();
         }
 
         public override void Editar()
@@ -47,16 +46,16 @@
             }
 
             TelaContatoForm telaContato = new TelaContatoForm();
-            telaContato.Contato = contato;
+            telaContato.ConfigurarTela(contato);
 
             DialogResult opcaoEscolhida = telaContato.ShowDialog();
 
             if (opcaoEscolhida == DialogResult.OK)
             {
-                repositorioContato.Editar(telaContato.Contato.id, telaContato.Contato);
-
-                CarregarContatos();
+                Contato contatoAtualizado = telaContato.ObterContato();
+                repositorioContato.Editar(contatoAtualizado.id, contatoAtualizado);                
             }
+            CarregarContatos();
         }
 
         public override void Excluir()
@@ -78,10 +77,9 @@
 
             if (opcaoEscolhida == DialogResult.OK)
             {
-                repositorioContato.Excluir(contato);
-
-                CarregarContatos();
+                repositorioContato.Excluir(contato);                
             }
+            CarregarContatos();
         }
 
         private void CarregarContatos()
@@ -104,8 +102,6 @@
         public override string ObterTipoCadastro()
         {
             return "Cadastro de Contatos";            
-        }
-
-        
+        }        
     }
 }

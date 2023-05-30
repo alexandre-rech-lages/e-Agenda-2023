@@ -21,14 +21,32 @@ namespace e_Agenda.WinApp.ModuloCompromisso
 
         public TipoLocalEnum tipoLocal;
 
-        public Compromisso(string assunto, DateTime data, TimeSpan horarioInicio, TimeSpan horarioFinal, 
+        public Compromisso(int id, string assunto, DateTime data, TimeSpan horarioInicio, TimeSpan horarioFinal, 
             Contato contato, string local, TipoLocalEnum tipoLocal)
         {
+            this.id = id;
             this.assunto = assunto;
             this.data = data;
             this.horarioInicio = horarioInicio;
             this.horarioFinal = horarioFinal;
             this.contato = contato;            
+            this.tipoLocal = tipoLocal;
+
+            if (tipoLocal == TipoLocalEnum.Online)
+                this.localOnline = local;
+            else
+                this.localPresencial = local;
+        }
+
+        public Compromisso(string assunto, DateTime data, TimeSpan horarioInicio, TimeSpan horarioFinal,
+            Contato contato, string local, TipoLocalEnum tipoLocal)
+        {
+            this.id = id;
+            this.assunto = assunto;
+            this.data = data;
+            this.horarioInicio = horarioInicio;
+            this.horarioFinal = horarioFinal;
+            this.contato = contato;
             this.tipoLocal = tipoLocal;
 
             if (tipoLocal == TipoLocalEnum.Online)
