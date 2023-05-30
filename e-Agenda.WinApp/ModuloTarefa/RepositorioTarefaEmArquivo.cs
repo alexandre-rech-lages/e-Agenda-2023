@@ -2,114 +2,112 @@
 
 namespace e_Agenda.WinApp.ModuloTarefa
 {
+
+    //serialização xml
+    //serialização json
+    //serialização csv
+    //serialização binária-bin
     public class RepositorioTarefaEmArquivo : IRepositorioTarefa
     {
         private static int contador;
+
+        private List<Tarefa> tarefas = new List<Tarefa>();
+
+        private const string NOME_ARQUIVO_TAREFAS = "C:\\temp\\tarefas\\dados-tarefas.bin";
+
+        public RepositorioTarefaEmArquivo()
+        {
+            if (File.Exists(NOME_ARQUIVO_TAREFAS))
+                CarregarTarefasDoArquivo();
+        }
 
         public void Inserir(Tarefa novaTarefa)
         {
             contador++;
             novaTarefa.id = contador;
+            tarefas.Add(novaTarefa);
 
-            //serialização binário
-            BinaryFormatter serializador = new BinaryFormatter();
-
-            MemoryStream tarefaStream = new MemoryStream();
-
-            serializador.Serialize(tarefaStream, novaTarefa);
-
-            byte[] tarefaEmBytes = tarefaStream.ToArray();
-
-            File.WriteAllBytes($"C:\\temp\\tarefas\\tarefa_{novaTarefa.id}.bin", tarefaEmBytes);
-
-            //serialização xml
-            //serialização json
-            //serialização csv
+            GravarTarefasEmArquivo();
         }
 
         public void Editar(int id, Tarefa tarefaAtualizada)
         {
-            Tarefa tarefaSelecionada = 
+            Tarefa tarefaSelecionada = SelecionarPorId(id);
 
+            tarefaSelecionada.AtualizarInformacoes(tarefaAtualizada);
 
-            //serialização binário
-            BinaryFormatter serializador = new BinaryFormatter();
-
-            MemoryStream tarefaStream = new MemoryStream();
-
-            serializador.Serialize(tarefaStream, tarefaAtualizada);
-
-            byte[] tarefaEmBytes = tarefaStream.ToArray();
-
-            File.WriteAllBytes($"C:\\temp\\tarefas\\tarefa_{tarefaAtualizada.id}.bin", tarefaEmBytes);
+            GravarTarefasEmArquivo();
         }
 
         public void Excluir(Tarefa tarefaSelecionada)
         {
-            File.Delete($"C:\\temp\\tarefas\\tarefa_{tarefaSelecionada.id}.bin");
+            tarefas.Remove(tarefaSelecionada);
+
+            GravarTarefasEmArquivo();
         }
 
         public List<Tarefa> SelecionarConcluidas()
         {
-            List<Tarefa> tarefasConcluidas =
-                SelecionarTodos()
-                .Where(x => x.percentualConcluido == 100)
-                .ToList();
-
-            return tarefasConcluidas;
+            return tarefas
+                    .Where(x => x.percentualConcluido == 100)
+                    .ToList();
         }
 
         public List<Tarefa> SelecionarPendentes()
         {
-            List<Tarefa> tarefasPendentes =
-                SelecionarTodos()
-                .Where(x => x.percentualConcluido < 100)
-                .ToList();
-
-            return tarefasPendentes;
+            return tarefas
+                    .Where(x => x.percentualConcluido < 100)
+                    .ToList();
         }
 
         public Tarefa SelecionarPorId(int id)
         {
-            Tarefa tarefa =
-                SelecionarTodos()
-                .FirstOrDefault(x => x.id == id);
+            Tarefa tarefa = tarefas.FirstOrDefault(x => x.id == id);
 
             return tarefa;
         }
 
         public List<Tarefa> SelecionarTodosOrdenadosPorPrioridade()
         {
-            List<Tarefa> tarefasOrdenadas =
-                SelecionarTodos()
-                .OrderByDescending(x => x.prioridade)
-                .ToList();
-
-            return tarefasOrdenadas;
+            return tarefas
+                    .OrderByDescending(x => x.prioridade)
+                    .ToList();
         }
 
-        private static List<Tarefa> SelecionarTodos()
+        public List<Tarefa> SelecionarTodos()
         {
-            List<Tarefa> tarefas = new List<Tarefa>();
-
-            string[] arquivos = Directory.GetFiles("C:\\temp\\tarefas");
-
-            foreach (string arquivoTarefa in arquivos)
-            {
-                BinaryFormatter serializador = new BinaryFormatter();
-
-                byte[] tarefaEmBytes = File.ReadAllBytes(arquivoTarefa);
-
-                MemoryStream tarefaStream = new MemoryStream(tarefaEmBytes);
-
-                Tarefa tarefa = (Tarefa)serializador.Deserialize(tarefaStream);
-
-                tarefas.Add(tarefa);
-            }
-
-            contador = tarefas.Max(x => x.id);
-
             return tarefas;
+        }
+
+        private void CarregarTarefasDoArquivo()
+        {
+            BinaryFormatter serializador = new BinaryFormatter();
+
+            byte[] tarefaEmBytes = File.ReadAllBytes(NOME_ARQUIVO_TAREFAS);
+
+            MemoryStream tarefaStream = new MemoryStream(tarefaEmBytes);
+
+            tarefas = (List<Tarefa>)serializador.Deserialize(tarefaStream);
+
+            AtualizarContador();
+        }
+
+        private void AtualizarContador()
+        {
+            contador = tarefas.Max(x => x.id);
+        }
+
+        private void GravarTarefasEmArquivo()
+        {
+            BinaryFormatter serializador = new BinaryFormatter();
+
+            MemoryStream tarefaStream = new MemoryStream();
+
+            serializador.Serialize(tarefaStream, tarefas);
+
+            byte[] tarefasEmBytes = tarefaStream.ToArray();
+
+            File.WriteAllBytes(NOME_ARQUIVO_TAREFAS, tarefasEmBytes);
         }
     }
 }
