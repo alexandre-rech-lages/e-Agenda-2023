@@ -2,10 +2,10 @@
 {
     public class ControladorContato : ControladorBase
     {
-        private RepositorioContato repositorioContato;
+        private IRepositorioContato repositorioContato;
         private ListagemContatoControl listagemContato;
 
-        public ControladorContato(RepositorioContato repositorioContato)
+        public ControladorContato(IRepositorioContato repositorioContato)
         {
             this.repositorioContato = repositorioContato;
         }
@@ -86,7 +86,7 @@
         {
             List<Contato> contatos = repositorioContato.SelecionarTodos();
 
-            listagemContato.AtualizarRegistros(contatos);
+            listagemContato.AtualizarRegistros(contatos);            
         }
 
         public override UserControl ObterListagem()

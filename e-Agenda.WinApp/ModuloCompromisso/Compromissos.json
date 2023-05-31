@@ -1,0 +1,24 @@
+[
+  {
+    "assunto": "sdfsdafsadf",
+    "data": "2023-05-31T15:09:50.297975-03:00",
+    "horarioInicio": "15:09:50.2873275",
+    "horarioFinal": "15:09:50.2771396",
+    "contato": null,
+    "localPresencial": "asdfasdfsdf",
+    "localOnline": null,
+    "tipoLocal": 2,
+    "id": 1
+  },
+  {
+    "assunto": "outro teset",
+    "data": "2023-05-31T15:11:29.7385214-03:00",
+    "horarioInicio": "15:11:29.7318056",
+    "horarioFinal": "15:11:29.7270513",
+    "contato": null,
+    "localPresencial": "sdfsdf",
+    "localOnline": null,
+    "tipoLocal": 2,
+    "id": 2
+  }
+]

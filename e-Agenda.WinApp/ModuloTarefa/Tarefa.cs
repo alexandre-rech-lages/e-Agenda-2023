@@ -9,6 +9,10 @@
         public List<ItemTarefa> items;
         public decimal percentualConcluido;
 
+        public Tarefa()
+        {            
+        }
+
         public Tarefa(int id, string titulo, PrioridadeTarefaEnum prioridade, DateTime dataCriacao)
         {
             this.id = id;

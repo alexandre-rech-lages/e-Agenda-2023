@@ -4,20 +4,20 @@
     {
         public string titulo;
 
-        public List<Despesa> despesas;
+        public List<Despesa> despesasRelacionadas;
 
 
         public Categoria(string titulo)
         {
             this.titulo = titulo;
-            this.despesas = new List<Despesa>();    
+            this.despesasRelacionadas = new List<Despesa>();    
         }
 
         public Categoria(int id, string titulo)
         {
             this.id = id;
             this.titulo = titulo;
-            this.despesas = new List<Despesa>();
+            this.despesasRelacionadas = new List<Despesa>();
         }
 
         public override void AtualizarInformacoes(Categoria registroAtualizado)

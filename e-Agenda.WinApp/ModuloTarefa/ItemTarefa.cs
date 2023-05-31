@@ -6,6 +6,7 @@
         public string titulo;
         public bool concluido;
 
+        public ItemTarefa() { }
         public ItemTarefa(string titulo)
         {
             this.titulo = titulo;

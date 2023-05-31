@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfCompromisso xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<Compromisso>
+		<id>1</id>
+		<assunto>Reunião com a Empresa X</assunto>
+		<data>2023-05-31T14:46:15.6303707-03:00</data>
+		<horarioInicio>PT14H46M15.623286S</horarioInicio>
+		<horarioFinal>PT15H46M15S</horarioFinal>
+		<localPresencial>Midilages</localPresencial>
+		<tipoLocal>Presencial</tipoLocal>
+	</Compromisso>
+	<Compromisso>
+		<id>2</id>
+		<assunto>Reunião dos pais </assunto>
+		<data>2023-06-01T14:49:24</data>
+		<horarioInicio>PT14H49M24.3701494S</horarioInicio>
+		<horarioFinal>PT14H49M24.3560248S</horarioFinal>
+		<localPresencial>COC</localPresencial>
+		<tipoLocal>Presencial</tipoLocal>
+	</Compromisso>
+	<Compromisso>
+		<id>3</id>
+		<assunto>Reunião com os times </assunto>
+		<data>2023-06-01T14:49:24</data>
+		<horarioInicio>PT14H49M24.3701494S</horarioInicio>
+		<horarioFinal>PT14H49M24.3560248S</horarioFinal>
+		<localPresencial>Midilages</localPresencial>
+		<tipoLocal>Presencial</tipoLocal>
+	</Compromisso>
+</ArrayOfCompromisso>

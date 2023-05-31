@@ -8,10 +8,11 @@ namespace e_Agenda.WinApp
     public partial class TelaPrincipalForm : Form
     {
         private ControladorBase controlador;
-        private RepositorioContato repositorioContato = new RepositorioContato(new List<Contato>());
-        private RepositorioCompromisso repositorioCompromisso = new RepositorioCompromisso(new List<Compromisso>());
-        private RepositorioCategoria repositorioCategoria = new RepositorioCategoria(new List<Categoria>());
 
+        private IRepositorioContato repositorioContato = new RepositorioContatoEmArquivo();
+        private IRepositorioCompromisso repositorioCompromisso = new RepositorioCompromissoEmArquivo();
+        private IRepositorioCategoria repositorioCategoria = new RepositorioCategoriaEmArquivo();
+        
         private IRepositorioTarefa repositorioTarefa = new RepositorioTarefaEmArquivo();
 
         private static TelaPrincipalForm telaPrincipal;
@@ -21,7 +22,7 @@ namespace e_Agenda.WinApp
             InitializeComponent();
 
             telaPrincipal = this;
-        }        
+        }
 
         public void AtualizarRodape(string mensagem)
         {
@@ -96,8 +97,6 @@ namespace e_Agenda.WinApp
             panelRegistros.Controls.Add(listagem);
         }
 
-
-
         private void ConfigurarToolTips(ControladorBase controlador)
         {
             btnInserir.ToolTipText = controlador.ToolTipInserir;
@@ -120,7 +119,7 @@ namespace e_Agenda.WinApp
 
         private void btnInserir_Click(object sender, EventArgs e)
         {
-            controlador.Inserir();
+            controlador.Inserir();            
         }
 
         private void btnEditar_Click(object sender, EventArgs e)

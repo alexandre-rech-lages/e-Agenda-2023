@@ -1,5 +1,6 @@
 ﻿namespace e_Agenda.WinApp.ModuloContato
 {
+    [Serializable]
     public class Contato : EntidadeBase<Contato>
     {
         public string nome { get; set; }
@@ -8,6 +9,11 @@
         public string email;
         public string cargo;
         public string empresa;
+
+        public Contato()
+        {
+            
+        }
 
         public Contato(int id, string nome, string telefone, string email, string cargo, string empresa)
         {

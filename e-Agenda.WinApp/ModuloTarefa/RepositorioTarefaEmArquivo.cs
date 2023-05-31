@@ -13,7 +13,7 @@ namespace e_Agenda.WinApp.ModuloTarefa
 
         private List<Tarefa> tarefas = new List<Tarefa>();
 
-        private const string NOME_ARQUIVO_TAREFAS = "C:\\temp\\tarefas\\dados-tarefas.bin";
+        private const string NOME_ARQUIVO_TAREFAS = "ModuloTarefa/Tarefas.bin";
 
         public RepositorioTarefaEmArquivo()
         {
@@ -62,9 +62,7 @@ namespace e_Agenda.WinApp.ModuloTarefa
 
         public Tarefa SelecionarPorId(int id)
         {
-            Tarefa tarefa = tarefas.FirstOrDefault(x => x.id == id);
-
-            return tarefa;
+            return tarefas.FirstOrDefault(x => x.id == id);
         }
 
         public List<Tarefa> SelecionarTodosOrdenadosPorPrioridade()
@@ -79,27 +77,9 @@ namespace e_Agenda.WinApp.ModuloTarefa
             return tarefas;
         }
 
-        private void CarregarTarefasDoArquivo()
-        {
-            BinaryFormatter serializador = new BinaryFormatter();
-
-            byte[] tarefaEmBytes = File.ReadAllBytes(NOME_ARQUIVO_TAREFAS);
-
-            MemoryStream tarefaStream = new MemoryStream(tarefaEmBytes);
-
-            tarefas = (List<Tarefa>)serializador.Deserialize(tarefaStream);
-
-            AtualizarContador();
-        }
-
-        private void AtualizarContador()
-        {
-            contador = tarefas.Max(x => x.id);
-        }
-
         private void GravarTarefasEmArquivo()
         {
-            BinaryFormatter serializador = new BinaryFormatter();
+            BinaryFormatter serializador = new BinaryFormatter();            
 
             MemoryStream tarefaStream = new MemoryStream();
 
@@ -108,6 +88,27 @@ namespace e_Agenda.WinApp.ModuloTarefa
             byte[] tarefasEmBytes = tarefaStream.ToArray();
 
             File.WriteAllBytes(NOME_ARQUIVO_TAREFAS, tarefasEmBytes);
+        }
+
+        private void CarregarTarefasDoArquivo()
+        {
+            BinaryFormatter serializador = new BinaryFormatter();
+
+            byte[] tarefaEmBytes = File.ReadAllBytes(NOME_ARQUIVO_TAREFAS);
+
+            MemoryStream tarefaStream = new MemoryStream(tarefaEmBytes);
+
+            if (tarefaStream.Length > 10)
+            {
+                tarefas = (List<Tarefa>)serializador.Deserialize(tarefaStream);
+
+                AtualizarContador();
+            }
+        }
+
+        private void AtualizarContador()
+        {
+            contador = tarefas.Max(x => x.id);
         }
     }
 }

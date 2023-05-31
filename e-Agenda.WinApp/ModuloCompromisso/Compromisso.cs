@@ -1,8 +1,8 @@
-﻿using e_Agenda.WinApp.Compartilhado;
-using e_Agenda.WinApp.ModuloContato;
+﻿using e_Agenda.WinApp.ModuloContato;
 
 namespace e_Agenda.WinApp.ModuloCompromisso
 {
+    [Serializable]
     public class Compromisso : EntidadeBase<Compromisso>
     {
         public string assunto;
@@ -20,6 +20,11 @@ namespace e_Agenda.WinApp.ModuloCompromisso
         public string localOnline;
 
         public TipoLocalEnum tipoLocal;
+
+        public Compromisso() //parameterless
+        {
+
+        }
 
         public Compromisso(int id, string assunto, DateTime data, TimeSpan horarioInicio, TimeSpan horarioFinal, 
             Contato contato, string local, TipoLocalEnum tipoLocal)

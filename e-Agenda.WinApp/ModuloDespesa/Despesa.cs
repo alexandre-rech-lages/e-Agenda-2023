@@ -7,7 +7,7 @@
         public decimal valor;
         public FormaPgtoDespesaEnum formaPgto;
 
-        public List<Categoria> categorias;
+        public List<Categoria> categoriasSelecionadas;
 
         public Despesa(string descricao, DateTime data, decimal valor, FormaPgtoDespesaEnum formaPgto)
         {
@@ -15,7 +15,7 @@
             this.data = data;
             this.valor = valor;
             this.formaPgto = formaPgto;
-            this.categorias = new List<Categoria>();
+            this.categoriasSelecionadas = new List<Categoria>();
         }
 
         public override void AtualizarInformacoes(Despesa registroAtualizado)
@@ -24,7 +24,7 @@
             this.data = registroAtualizado.data;
             this.valor = registroAtualizado.valor;
             this.formaPgto = registroAtualizado.formaPgto;
-            this.categorias = registroAtualizado.categorias;
+            this.categoriasSelecionadas = registroAtualizado.categoriasSelecionadas;
         }
 
         public override string[] Validar()

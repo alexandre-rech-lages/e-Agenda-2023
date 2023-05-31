@@ -1,0 +1,74 @@
+[
+  {
+    "titulo": "Preparar Aula",
+    "prioridade": 2,
+    "dataCriacao": "2023-05-31T10:43:29.731476-03:00",
+    "items": [
+      {
+        "titulo": "a",
+        "concluido": true
+      },
+      {
+        "titulo": "b",
+        "concluido": true
+      },
+      {
+        "titulo": "c",
+        "concluido": false
+      }
+    ],
+    "percentualConcluido": 66.67,
+    "id": 1
+  },
+  {
+    "titulo": "Preparar Aula 2",
+    "prioridade": 1,
+    "dataCriacao": "2023-05-31T10:43:29.731476-03:00",
+    "items": [
+      {
+        "titulo": "a",
+        "concluido": false
+      },
+      {
+        "titulo": "b",
+        "concluido": false
+      }
+    ],
+    "percentualConcluido": 0,
+    "id": 2
+  },
+  {
+    "titulo": "Preparar Aula 3",
+    "prioridade": 1,
+    "dataCriacao": "2023-05-31T10:43:29.731476-03:00",
+    "items": [
+      {
+        "titulo": "a",
+        "concluido": false
+      },
+      {
+        "titulo": "b",
+        "concluido": false
+      }
+    ],
+    "percentualConcluido": 0,
+    "id": 3
+  },
+  {
+    "titulo": "Preparar Aula 4",
+    "prioridade": 1,
+    "dataCriacao": "2023-05-31T10:43:29.731476-03:00",
+    "items": [
+      {
+        "titulo": "a",
+        "concluido": false
+      },
+      {
+        "titulo": "b",
+        "concluido": false
+      }
+    ],
+    "percentualConcluido": 0,
+    "id": 4
+  }
+]
