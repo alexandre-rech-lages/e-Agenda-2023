@@ -25,6 +25,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Compartilhado\e-Agenda.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="ModuloCompromisso\Compromissos.bin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

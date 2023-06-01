@@ -1,10 +1,14 @@
 ﻿namespace e_Agenda.WinApp.ModuloDespesa
 {
     public class RepositorioCategoriaEmArquivo : RepositorioEmArquivoBase<Categoria>, IRepositorioCategoria
-    {      
-        protected override string ObterNomeArquivo()
+    {
+        public RepositorioCategoriaEmArquivo(ContextoDados contexto) : base(contexto)
         {
-            return "ModuloDespesa/Categorias.json";
+        }
+      
+        protected override List<Categoria> ObterRegistros()
+        {
+            return contextoDados.categorias;
         }
     }
 }

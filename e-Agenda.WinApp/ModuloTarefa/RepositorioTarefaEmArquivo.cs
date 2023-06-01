@@ -2,30 +2,34 @@
 {
     public class RepositorioTarefaEmArquivo : RepositorioEmArquivoBase<Tarefa>, IRepositorioTarefa
     {
-        protected override string ObterNomeArquivo()
+        public RepositorioTarefaEmArquivo(ContextoDados contexto) : base(contexto)
         {
-            return "ModuloTarefa/Tarefas.json";
         }
 
         public List<Tarefa> SelecionarConcluidas()
         {
-            return registros
+            return ObterRegistros()
                     .Where(x => x.percentualConcluido == 100)
                     .ToList();
         }
 
         public List<Tarefa> SelecionarPendentes()
         {
-            return registros
+            return ObterRegistros()
                     .Where(x => x.percentualConcluido < 100)
                     .ToList();
         }
 
         public List<Tarefa> SelecionarTodosOrdenadosPorPrioridade()
         {
-            return registros
+            return ObterRegistros()
                     .OrderByDescending(x => x.prioridade)
                     .ToList();
+        }
+
+        protected override List<Tarefa> ObterRegistros()
+        {
+            return contextoDados.tarefas;
         }
     }
 }

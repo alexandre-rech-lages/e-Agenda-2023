@@ -9,11 +9,13 @@ namespace e_Agenda.WinApp
     {
         private ControladorBase controlador;
 
-        private IRepositorioContato repositorioContato = new RepositorioContatoEmArquivo();
-        private IRepositorioCategoria repositorioCategoria = new RepositorioCategoriaEmArquivo();        
+        static ContextoDados contextoDados = new ContextoDados(carregarDados: true);
 
-        private IRepositorioCompromisso repositorioCompromisso = new RepositorioCompromissoEmArquivo();
-        private IRepositorioTarefa repositorioTarefa = new RepositorioTarefaEmArquivo();
+        private IRepositorioContato repositorioContato = new RepositorioContatoEmArquivo(contextoDados);
+        private IRepositorioCategoria repositorioCategoria = new RepositorioCategoriaEmArquivo(contextoDados);        
+
+        private IRepositorioCompromisso repositorioCompromisso = new RepositorioCompromissoEmArquivo(contextoDados);
+        private IRepositorioTarefa repositorioTarefa = new RepositorioTarefaEmArquivo(contextoDados);
 
         private static TelaPrincipalForm telaPrincipal;
 

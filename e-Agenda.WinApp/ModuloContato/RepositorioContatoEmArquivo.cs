@@ -1,10 +1,16 @@
 ﻿namespace e_Agenda.WinApp.ModuloContato
 {
     public class RepositorioContatoEmArquivo : RepositorioEmArquivoBase<Contato>, IRepositorioContato
-    {        
-        protected override string ObterNomeArquivo()
+    {
+        public RepositorioContatoEmArquivo(ContextoDados contexto) : base(contexto)
         {
-            return "ModuloContato/Contatos.json";
+            
+        }
+
+
+        protected override List<Contato> ObterRegistros()
+        {
+            return contextoDados.contatos;
         }
     }
 }
