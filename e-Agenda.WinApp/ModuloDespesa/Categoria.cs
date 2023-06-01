@@ -6,7 +6,10 @@
 
         public List<Despesa> despesasRelacionadas;
 
-
+        public Categoria()
+        {
+            
+        }
         public Categoria(string titulo)
         {
             this.titulo = titulo;

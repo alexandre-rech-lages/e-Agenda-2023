@@ -1,6 +1,6 @@
 ﻿namespace e_Agenda.WinApp.ModuloCompromisso
 {
-    partial class ListagemCompromissoControl
+    partial class TabelaCompromissoControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,31 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            listCompromissos = new ListBox();
+            gridCompromissos = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)gridCompromissos).BeginInit();
             SuspendLayout();
             // 
-            // listCompromissos
+            // gridCompromissos
             // 
-            listCompromissos.Dock = DockStyle.Fill;
-            listCompromissos.FormattingEnabled = true;
-            listCompromissos.ItemHeight = 15;
-            listCompromissos.Location = new Point(0, 0);
-            listCompromissos.Name = "listCompromissos";
-            listCompromissos.Size = new Size(428, 352);
-            listCompromissos.TabIndex = 0;
+            gridCompromissos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            gridCompromissos.Dock = DockStyle.Fill;
+            gridCompromissos.Location = new Point(0, 0);
+            gridCompromissos.Name = "gridCompromissos";
+            gridCompromissos.RowTemplate.Height = 25;
+            gridCompromissos.Size = new Size(353, 233);
+            gridCompromissos.TabIndex = 0;
             // 
-            // ListagemCompromissoControl
+            // TabelaCompromissoControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(listCompromissos);
-            Name = "ListagemCompromissoControl";
-            Size = new Size(428, 352);
+            Controls.Add(gridCompromissos);
+            Name = "TabelaCompromissoControl";
+            Size = new Size(353, 233);
+            ((System.ComponentModel.ISupportInitialize)gridCompromissos).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private ListBox listCompromissos;
+        private DataGridView gridCompromissos;
     }
 }

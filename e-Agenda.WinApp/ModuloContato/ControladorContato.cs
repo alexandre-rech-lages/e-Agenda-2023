@@ -3,7 +3,7 @@
     public class ControladorContato : ControladorBase
     {
         private IRepositorioContato repositorioContato;
-        private ListagemContatoControl listagemContato;
+        private TabelaContatoControl tabelaContato;
 
         public ControladorContato(IRepositorioContato repositorioContato)
         {
@@ -33,7 +33,7 @@
 
         public override void Editar()
         {
-            Contato contato = listagemContato.ObterContatoSelecionado();
+            Contato contato = ObterContatoSelecionado();
 
             if (contato == null)
             {
@@ -58,9 +58,16 @@
             CarregarContatos();
         }
 
+        private Contato ObterContatoSelecionado()
+        {
+            int id = tabelaContato.ObterIdSelecionado();
+
+            return repositorioContato.SelecionarPorId(id);
+        }
+
         public override void Excluir()
         {            
-            Contato contato = listagemContato.ObterContatoSelecionado();
+            Contato contato = ObterContatoSelecionado();
 
             if (contato == null)
             {
@@ -86,17 +93,17 @@
         {
             List<Contato> contatos = repositorioContato.SelecionarTodos();
 
-            listagemContato.AtualizarRegistros(contatos);            
+            tabelaContato.AtualizarRegistros(contatos);            
         }
 
         public override UserControl ObterListagem()
         {
-            if (listagemContato == null)
-                listagemContato = new ListagemContatoControl();
+            if (tabelaContato == null)
+                tabelaContato = new TabelaContatoControl();
 
             CarregarContatos();
 
-            return listagemContato;
+            return tabelaContato;
         }
 
         public override string ObterTipoCadastro()

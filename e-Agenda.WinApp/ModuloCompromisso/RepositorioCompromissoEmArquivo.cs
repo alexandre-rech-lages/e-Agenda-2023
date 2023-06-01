@@ -92,6 +92,8 @@ namespace e_Agenda.WinApp.ModuloCompromisso
 
             if (compromissosJson.Length > 0)
                 compromissos = JsonSerializer.Deserialize<List<Compromisso>>(compromissosJson, opcoes);
+
+            AtualizarContador();
         }
 
         #endregion
@@ -160,7 +162,8 @@ namespace e_Agenda.WinApp.ModuloCompromisso
 
         private void AtualizarContador()
         {
-            contador = compromissos.Max(x => x.id);
+            if (compromissos.Count > 0) 
+                contador = compromissos.Max(x => x.id);
         }
 
     }

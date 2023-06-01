@@ -1,4 +1,5 @@
 ﻿using System.Runtime.Serialization.Formatters.Binary;
+using System.Text.Json;
 
 namespace e_Agenda.WinApp.ModuloContato
 {
@@ -13,7 +14,7 @@ namespace e_Agenda.WinApp.ModuloContato
         public RepositorioContatoEmArquivo()
         {
             if (File.Exists(NOME_ARQUIVO_CONTATOS))
-                CarregarContatosDoArquivo();
+                CarregarContatosDoArquivoJson();
         }
 
         public void Inserir(Contato novoContato)
@@ -22,7 +23,7 @@ namespace e_Agenda.WinApp.ModuloContato
             novoContato.id = contador;
             contatos.Add(novoContato);
 
-            GravarContatosEmArquivo();
+            GravarContatosEmArquivoJson();
         }
 
         public void Editar(int id, Contato contatoAtualizado)
@@ -31,14 +32,14 @@ namespace e_Agenda.WinApp.ModuloContato
 
             contatoSelecionado.AtualizarInformacoes(contatoAtualizado);
 
-            GravarContatosEmArquivo();
+            GravarContatosEmArquivoJson();
         }
 
         public void Excluir(Contato contatoSelecionado)
         {
             contatos.Remove(contatoSelecionado);
 
-            GravarContatosEmArquivo();
+            GravarContatosEmArquivoJson();
         }
 
         public Contato SelecionarPorId(int id)
@@ -51,7 +52,31 @@ namespace e_Agenda.WinApp.ModuloContato
             return contatos;
         }
 
-        private void GravarContatosEmArquivo()
+        private void GravarContatosEmArquivoJson()
+        {
+            JsonSerializerOptions opcoes = new JsonSerializerOptions();
+            opcoes.IncludeFields = true;
+            opcoes.WriteIndented = true;
+
+            string contatosJson = JsonSerializer.Serialize(contatos, opcoes);
+
+            File.WriteAllText(NOME_ARQUIVO_CONTATOS, contatosJson);
+        }
+
+        private void CarregarContatosDoArquivoJson()
+        {
+            JsonSerializerOptions opcoes = new JsonSerializerOptions();
+            opcoes.IncludeFields = true;
+
+            string contatosJson = File.ReadAllText(NOME_ARQUIVO_CONTATOS);
+
+            if (contatosJson.Length > 0)
+                contatos = JsonSerializer.Deserialize<List<Contato>>(contatosJson, opcoes);
+
+            AtualizarContador();
+        }
+
+        private void GravarContatosEmArquivoBin()
         {
             BinaryFormatter serializador = new BinaryFormatter();
 
@@ -64,7 +89,7 @@ namespace e_Agenda.WinApp.ModuloContato
             File.WriteAllBytes(NOME_ARQUIVO_CONTATOS, contatosEmBytes);
         }
 
-        private void CarregarContatosDoArquivo()
+        private void CarregarContatosDoArquivoBin()
         {
             BinaryFormatter serializador = new BinaryFormatter();
 
@@ -73,12 +98,14 @@ namespace e_Agenda.WinApp.ModuloContato
             MemoryStream contatoStream = new MemoryStream(contatoEmBytes);
 
             contatos = (List<Contato>)serializador.Deserialize(contatoStream);
+
             AtualizarContador();
         }
 
         private void AtualizarContador()
         {
-            contador = contatos.Max(x => x.id);
+            if (contatos.Count > 0) 
+                contador = contatos.Max(x => x.id);
         }
     }
 }

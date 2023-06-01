@@ -8,5 +8,6 @@
         List<Compromisso>? SelecionarCompromissosFuturos(DateTime dataInicio, DateTime dataFinal);
         List<Compromisso>? SelecionarCompromissosPassados(DateTime now);
         List<Compromisso>? SelecionarTodos();
+        Compromisso SelecionarPorId(int id);
     }
 }

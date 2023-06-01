@@ -1,6 +1,6 @@
-﻿namespace e_Agenda.WinApp.ModuloTarefa
+﻿namespace e_Agenda.WinApp.ModuloContato
 {
-    partial class ListagemTarefaControl
+    partial class TabelaContatoControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,31 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            listTarefas = new ListBox();
+            gridContatos = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)gridContatos).BeginInit();
             SuspendLayout();
             // 
-            // listTarefas
+            // gridContatos
             // 
-            listTarefas.Dock = DockStyle.Fill;
-            listTarefas.FormattingEnabled = true;
-            listTarefas.ItemHeight = 15;
-            listTarefas.Location = new Point(0, 0);
-            listTarefas.Name = "listTarefas";
-            listTarefas.Size = new Size(682, 605);
-            listTarefas.TabIndex = 0;
+            gridContatos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            gridContatos.Dock = DockStyle.Fill;
+            gridContatos.Location = new Point(0, 0);
+            gridContatos.Name = "gridContatos";
+            gridContatos.RowTemplate.Height = 25;
+            gridContatos.Size = new Size(442, 413);
+            gridContatos.TabIndex = 0;
             // 
-            // ListagemTarefaControl
+            // TabelaContatoControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(listTarefas);
-            Name = "ListagemTarefaControl";
-            Size = new Size(682, 605);
+            Controls.Add(gridContatos);
+            Name = "TabelaContatoControl";
+            Size = new Size(442, 413);
+            ((System.ComponentModel.ISupportInitialize)gridContatos).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private ListBox listTarefas;
+        private DataGridView gridContatos;
     }
 }

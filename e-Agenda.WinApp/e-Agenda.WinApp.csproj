@@ -34,6 +34,15 @@
     <None Update="ModuloCompromisso\Compromissos.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="ModuloContato\Contatos.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="ModuloDespesa\Categorias.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="ModuloDespesa\Despesas.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="ModuloTarefa\Tarefas.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

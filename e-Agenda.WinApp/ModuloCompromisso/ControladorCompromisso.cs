@@ -6,7 +6,7 @@ namespace e_Agenda.WinApp.ModuloCompromisso
     {
         private IRepositorioContato repositorioContato;
         private IRepositorioCompromisso repositorioCompromisso;
-        ListagemCompromissoControl listagemCompromisso;
+        private TabelaCompromissoControl tabelaCompromisso;
 
         public ControladorCompromisso(IRepositorioContato repositorioContato, IRepositorioCompromisso repositorioCompromisso)
         {
@@ -40,10 +40,10 @@ namespace e_Agenda.WinApp.ModuloCompromisso
             }
             CarregarCompromissos();
         }
-
+     
         public override void Editar()
         {
-            Compromisso compromissoSelecionado = listagemCompromisso.ObterCompromissoSelecionado();
+            Compromisso compromissoSelecionado = ObterCompromissoSelecionado();
 
             if (compromissoSelecionado == null)
             {
@@ -74,7 +74,7 @@ namespace e_Agenda.WinApp.ModuloCompromisso
 
         public override void Excluir()
         {
-            Compromisso compromissoSelecionado = listagemCompromisso.ObterCompromissoSelecionado();
+            Compromisso compromissoSelecionado = ObterCompromissoSelecionado();
 
             if (compromissoSelecionado == null)
             {
@@ -132,23 +132,18 @@ namespace e_Agenda.WinApp.ModuloCompromisso
 
                 TelaPrincipalForm.Instancia.AtualizarRodape($"Visualizando {compromissos.Count} compromissos");
             }
-        }
-
-        private void CarregarCompromissos(List<Compromisso> compromissos)
-        {
-            listagemCompromisso.AtualizarRegistros(compromissos);
-        }
+        }       
 
         public override UserControl ObterListagem()
         {
-            if (listagemCompromisso == null)
+            if (tabelaCompromisso == null)
             {
-                listagemCompromisso = new ListagemCompromissoControl();
+                tabelaCompromisso = new TabelaCompromissoControl();
             }
 
             CarregarCompromissos();
 
-            return listagemCompromisso;
+            return tabelaCompromisso;
         }
 
         public override string ObterTipoCadastro()
@@ -156,11 +151,23 @@ namespace e_Agenda.WinApp.ModuloCompromisso
             return "Cadastro de Compromissos";
         }
 
+        private void CarregarCompromissos(List<Compromisso> compromissos)
+        {
+            tabelaCompromisso.AtualizarRegistros(compromissos);
+        }
+
+        private Compromisso ObterCompromissoSelecionado()
+        {
+            int id = tabelaCompromisso.ObterIdSelecionado();
+
+            return repositorioCompromisso.SelecionarPorId(id);
+        }
+
         private void CarregarCompromissos()
         {
             List<Compromisso> compromissos = repositorioCompromisso.SelecionarTodos();
 
-            listagemCompromisso.AtualizarRegistros(compromissos);
+            tabelaCompromisso.AtualizarRegistros(compromissos);
         }
     }
 }

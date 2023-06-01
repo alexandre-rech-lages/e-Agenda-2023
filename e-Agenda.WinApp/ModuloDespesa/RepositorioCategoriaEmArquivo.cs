@@ -1,4 +1,5 @@
 ﻿using System.Runtime.Serialization.Formatters.Binary;
+using System.Text.Json;
 
 namespace e_Agenda.WinApp.ModuloDespesa
 {
@@ -8,12 +9,12 @@ namespace e_Agenda.WinApp.ModuloDespesa
 
         private List<Categoria> categorias = new List<Categoria>();
 
-        private const string NOME_ARQUIVO_CATEGORIAS = "ModuloCategoria/Categorias.json";
+        private const string NOME_ARQUIVO_CATEGORIAS = "ModuloDespesa/Categorias.json";
 
         public RepositorioCategoriaEmArquivo()
         {
             if (File.Exists(NOME_ARQUIVO_CATEGORIAS))
-                CarregarCategoriasDoArquivo();
+                CarregarCategoriasDoArquivoJson();
         }
 
         public void Inserir(Categoria novaCategoria)
@@ -22,7 +23,7 @@ namespace e_Agenda.WinApp.ModuloDespesa
             novaCategoria.id = contador;
             categorias.Add(novaCategoria);
 
-            GravarCategoriasEmArquivo();
+            GravarCategoriasEmArquivoJson();
         }
 
         public void Editar(int id, Categoria categoriaAtualizada)
@@ -31,14 +32,14 @@ namespace e_Agenda.WinApp.ModuloDespesa
 
             categoriaSelecionada.AtualizarInformacoes(categoriaAtualizada);
 
-            GravarCategoriasEmArquivo();
+            GravarCategoriasEmArquivoJson();
         }
 
         public void Excluir(Categoria categoriaSelecionada)
         {
             categorias.Remove(categoriaSelecionada);
 
-            GravarCategoriasEmArquivo();
+            GravarCategoriasEmArquivoJson();
         }
               
         public Categoria SelecionarPorId(int id)
@@ -51,7 +52,31 @@ namespace e_Agenda.WinApp.ModuloDespesa
             return categorias;
         }
 
-        private void GravarCategoriasEmArquivo()
+        private void GravarCategoriasEmArquivoJson()
+        {
+            JsonSerializerOptions opcoes = new JsonSerializerOptions();
+            opcoes.IncludeFields = true;
+            opcoes.WriteIndented = true;
+
+            string categoriasJson = JsonSerializer.Serialize(categorias, opcoes);
+
+            File.WriteAllText(NOME_ARQUIVO_CATEGORIAS, categoriasJson);
+        }
+
+        private void CarregarCategoriasDoArquivoJson()
+        {
+            JsonSerializerOptions opcoes = new JsonSerializerOptions();
+            opcoes.IncludeFields = true;
+
+            string categoriasJson = File.ReadAllText(NOME_ARQUIVO_CATEGORIAS);
+
+            if (categoriasJson.Length > 0)
+                categorias = JsonSerializer.Deserialize<List<Categoria>>(categoriasJson, opcoes);
+
+            AtualizarContador();
+        }
+
+        private void GravarCategoriasEmArquivoBin()
         {
             BinaryFormatter serializador = new BinaryFormatter();
 
@@ -64,7 +89,7 @@ namespace e_Agenda.WinApp.ModuloDespesa
             File.WriteAllBytes(NOME_ARQUIVO_CATEGORIAS, categoriasEmBytes);
         }
 
-        private void CarregarCategoriasDoArquivo()
+        private void CarregarCategoriasDoArquivoBin()
         {
             BinaryFormatter serializador = new BinaryFormatter();
 
@@ -79,7 +104,8 @@ namespace e_Agenda.WinApp.ModuloDespesa
 
         private void AtualizarContador()
         {
-            contador = categorias.Max(x => x.id);
+            if (categorias.Count > 0)
+                contador = categorias.Max(x => x.id);
         }
     }
 }

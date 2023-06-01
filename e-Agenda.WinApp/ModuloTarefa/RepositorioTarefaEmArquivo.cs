@@ -1,4 +1,6 @@
-﻿using System.Runtime.Serialization.Formatters.Binary;
+﻿using e_Agenda.WinApp.ModuloDespesa;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Text.Json;
 
 namespace e_Agenda.WinApp.ModuloTarefa
 {
@@ -13,12 +15,12 @@ namespace e_Agenda.WinApp.ModuloTarefa
 
         private List<Tarefa> tarefas = new List<Tarefa>();
 
-        private const string NOME_ARQUIVO_TAREFAS = "ModuloTarefa/Tarefas.bin";
+        private const string NOME_ARQUIVO_TAREFAS = "ModuloTarefa/Tarefas.json";
 
         public RepositorioTarefaEmArquivo()
         {
             if (File.Exists(NOME_ARQUIVO_TAREFAS))
-                CarregarTarefasDoArquivo();
+                CarregarTarefasDoArquivoJson();
         }
 
         public void Inserir(Tarefa novaTarefa)
@@ -27,7 +29,7 @@ namespace e_Agenda.WinApp.ModuloTarefa
             novaTarefa.id = contador;
             tarefas.Add(novaTarefa);
 
-            GravarTarefasEmArquivo();
+            GravarTarefasEmArquivoJson();
         }
 
         public void Editar(int id, Tarefa tarefaAtualizada)
@@ -36,14 +38,14 @@ namespace e_Agenda.WinApp.ModuloTarefa
 
             tarefaSelecionada.AtualizarInformacoes(tarefaAtualizada);
 
-            GravarTarefasEmArquivo();
+            GravarTarefasEmArquivoJson();
         }
 
         public void Excluir(Tarefa tarefaSelecionada)
         {
             tarefas.Remove(tarefaSelecionada);
 
-            GravarTarefasEmArquivo();
+            GravarTarefasEmArquivoJson();
         }
 
         public List<Tarefa> SelecionarConcluidas()
@@ -77,7 +79,31 @@ namespace e_Agenda.WinApp.ModuloTarefa
             return tarefas;
         }
 
-        private void GravarTarefasEmArquivo()
+        private void GravarTarefasEmArquivoJson()
+        {
+            JsonSerializerOptions opcoes = new JsonSerializerOptions();
+            opcoes.IncludeFields = true;
+            opcoes.WriteIndented = true;
+
+            string tarefasJson = JsonSerializer.Serialize(tarefas, opcoes);
+
+            File.WriteAllText(NOME_ARQUIVO_TAREFAS, tarefasJson);
+        }
+
+        private void CarregarTarefasDoArquivoJson()
+        {
+            JsonSerializerOptions opcoes = new JsonSerializerOptions();
+            opcoes.IncludeFields = true;
+
+            string tarefasJson = File.ReadAllText(NOME_ARQUIVO_TAREFAS);
+
+            if (tarefasJson.Length > 0)
+                tarefas = JsonSerializer.Deserialize<List<Tarefa>>(tarefasJson, opcoes);
+
+            AtualizarContador();
+        }
+
+        private void GravarTarefasEmArquivoBin()
         {
             BinaryFormatter serializador = new BinaryFormatter();            
 
@@ -90,7 +116,7 @@ namespace e_Agenda.WinApp.ModuloTarefa
             File.WriteAllBytes(NOME_ARQUIVO_TAREFAS, tarefasEmBytes);
         }
 
-        private void CarregarTarefasDoArquivo()
+        private void CarregarTarefasDoArquivoBin()
         {
             BinaryFormatter serializador = new BinaryFormatter();
 
@@ -108,7 +134,8 @@ namespace e_Agenda.WinApp.ModuloTarefa
 
         private void AtualizarContador()
         {
-            contador = tarefas.Max(x => x.id);
+            if (tarefas.Count > 0)
+                contador = tarefas.Max(x => x.id);
         }
     }
 }
