@@ -1,3 +1,16 @@
+using e_Agenda.Dominio.ModuloCompromisso;
+using e_Agenda.Dominio.ModuloContato;
+using e_Agenda.Dominio.ModuloDespesa;
+using e_Agenda.Dominio.ModuloTarefa;
+
+using e_Agenda.Infra.Dados.Arquivo.Compartilhado;
+using e_Agenda.Infra.Dados.Arquivo.ModuloCompromisso;
+using e_Agenda.Infra.Dados.Arquivo.ModuloContato;
+using e_Agenda.Infra.Dados.Arquivo.ModuloDespesa;
+using e_Agenda.Infra.Dados.Arquivo.ModuloTarefa;
+
+using e_Agenda.Infra.Dados.Csv.ModuloContato;
+
 using e_Agenda.WinApp.ModuloCompromisso;
 using e_Agenda.WinApp.ModuloContato;
 using e_Agenda.WinApp.ModuloDespesa;
@@ -11,7 +24,7 @@ namespace e_Agenda.WinApp
 
         static ContextoDados contextoDados = new ContextoDados(carregarDados: true);
 
-        private IRepositorioContato repositorioContato = new RepositorioContatoEmArquivo(contextoDados);
+        private IRepositorioContato repositorioContato = new RepositorioContatoEmCsv();
         private IRepositorioCategoria repositorioCategoria = new RepositorioCategoriaEmArquivo(contextoDados);
 
         private IRepositorioDespesa repositorioDespesa = new RepositorioDespesaEmArquivo(contextoDados);

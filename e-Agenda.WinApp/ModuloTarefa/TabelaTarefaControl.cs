@@ -1,4 +1,6 @@
-﻿namespace e_Agenda.WinApp.ModuloTarefa
+﻿using e_Agenda.Dominio.ModuloTarefa;
+
+namespace e_Agenda.WinApp.ModuloTarefa
 {
     public partial class TabelaTarefaControl : UserControl
     {

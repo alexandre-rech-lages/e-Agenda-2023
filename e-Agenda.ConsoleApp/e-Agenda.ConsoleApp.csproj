@@ -8,4 +8,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\e-Agenda.Dominio\e-Agenda.Dominio.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,4 +1,6 @@
-﻿namespace e_Agenda.WinApp.ModuloContato
+﻿using e_Agenda.Dominio.ModuloContato;
+
+namespace e_Agenda.WinApp.ModuloContato
 {
     public class ControladorContato : ControladorBase
     {
