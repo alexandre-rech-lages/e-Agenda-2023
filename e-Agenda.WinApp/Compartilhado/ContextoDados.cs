@@ -19,17 +19,21 @@ namespace e_Agenda.WinApp.Compartilhado
 
         public List<Categoria> categorias;
 
+        public List<Despesa> despesas;
+
         public ContextoDados()
-        {            
+        {
             contatos = new List<Contato>();
             compromissos = new List<Compromisso>();
             tarefas = new List<Tarefa>();
-            categorias = new List<Categoria>(); 
+            categorias = new List<Categoria>();
+            despesas = new List<Despesa>();
         }
 
         public ContextoDados(bool carregarDados) : this()
         {
-            CarregarDoArquivoJson();
+            if (carregarDados)
+                CarregarDoArquivoJson();
         }
 
         public void GravarEmArquivoJson()
@@ -57,6 +61,7 @@ namespace e_Agenda.WinApp.Compartilhado
                     this.compromissos = ctx.compromissos;
                     this.tarefas = ctx.tarefas;
                     this.categorias = ctx.categorias;
+                    this.despesas = ctx.despesas;
                 }
             }
         }

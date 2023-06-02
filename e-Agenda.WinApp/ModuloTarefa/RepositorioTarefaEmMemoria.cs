@@ -4,9 +4,8 @@
     public class RepositorioTarefaEmMemoria : RepositorioEmMemoriaBase<Tarefa>, IRepositorioTarefa
     {
 
-        public RepositorioTarefaEmMemoria(List<Tarefa> tarefas)
-        { 
-            listaRegistros = tarefas;
+        public RepositorioTarefaEmMemoria(List<Tarefa> tarefas) : base(tarefas)
+        {             
         }
 
         public List<Tarefa>? SelecionarConcluidas()

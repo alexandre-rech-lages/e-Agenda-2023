@@ -6,6 +6,11 @@
         protected List<TEntidade> listaRegistros;
         protected int contadorRegistros = 0;
 
+        protected RepositorioEmMemoriaBase(List<TEntidade> listaRegistros)
+        {
+            this.listaRegistros = listaRegistros;
+        }
+
         public virtual void Inserir(TEntidade registro)
         {
             contadorRegistros++;

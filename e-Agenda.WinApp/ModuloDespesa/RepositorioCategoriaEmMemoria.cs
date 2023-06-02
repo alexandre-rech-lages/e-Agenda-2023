@@ -2,9 +2,8 @@
 {
     public class RepositorioCategoriaEmMemoria : RepositorioEmMemoriaBase<Categoria>, IRepositorioCategoria
     {
-        public RepositorioCategoriaEmMemoria(List<Categoria> categorias)
+        public RepositorioCategoriaEmMemoria(List<Categoria> categorias) : base(categorias) 
         {
-            this.listaRegistros = categorias;
-        }
+        }        
     }
 }

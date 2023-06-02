@@ -9,6 +9,11 @@
 
         public List<Categoria> categoriasSelecionadas;
 
+        public Despesa()
+        {
+            
+        }
+
         public Despesa(string descricao, DateTime data, decimal valor, FormaPgtoDespesaEnum formaPgto)
         {
             this.descricao = descricao;

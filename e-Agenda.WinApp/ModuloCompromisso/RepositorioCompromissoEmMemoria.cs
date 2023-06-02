@@ -2,10 +2,9 @@
 {
     public class RepositorioCompromissoEmMemoria : RepositorioEmMemoriaBase<Compromisso>, IRepositorioCompromisso
     {
-        public RepositorioCompromissoEmMemoria(List<Compromisso> compromissos)
-        {
-            this.listaRegistros = compromissos;
-        }
+        public RepositorioCompromissoEmMemoria(List<Compromisso> compromissos) : base(compromissos) 
+        { 
+        }        
 
         //Selecionar Compromissos Passados
         public List<Compromisso> SelecionarCompromissosPassados(DateTime hoje)

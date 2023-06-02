@@ -2,11 +2,8 @@
 {
     public class RepositorioContatoEmMemoria : RepositorioEmMemoriaBase<Contato>, IRepositorioContato
     {
-        public RepositorioContatoEmMemoria(List<Contato> contatos)
-        {
-            this.listaRegistros = contatos;
-        }
-
-        
+        public RepositorioContatoEmMemoria(List<Contato> contatos) : base(contatos)
+        {            
+        }        
     }
 }

@@ -12,7 +12,9 @@ namespace e_Agenda.WinApp
         static ContextoDados contextoDados = new ContextoDados(carregarDados: true);
 
         private IRepositorioContato repositorioContato = new RepositorioContatoEmArquivo(contextoDados);
-        private IRepositorioCategoria repositorioCategoria = new RepositorioCategoriaEmArquivo(contextoDados);        
+        private IRepositorioCategoria repositorioCategoria = new RepositorioCategoriaEmArquivo(contextoDados);
+
+        private IRepositorioDespesa repositorioDespesa = new RepositorioDespesaEmArquivo(contextoDados);
 
         private IRepositorioCompromisso repositorioCompromisso = new RepositorioCompromissoEmArquivo(contextoDados);
         private IRepositorioTarefa repositorioTarefa = new RepositorioTarefaEmArquivo(contextoDados);
@@ -70,6 +72,13 @@ namespace e_Agenda.WinApp
             ConfigurarTelaPrincipal(controlador);
         }
 
+        private void despesasMenuItem_Click(object sender, EventArgs e)
+        {
+            controlador = new ControladorDespesa(repositorioDespesa);
+
+            ConfigurarTelaPrincipal(controlador);
+        }
+
         private void ConfigurarTelaPrincipal(ControladorBase controladorBase)
         {
             labelTipoCadastro.Text = controladorBase.ObterTipoCadastro();
@@ -121,7 +130,7 @@ namespace e_Agenda.WinApp
 
         private void btnInserir_Click(object sender, EventArgs e)
         {
-            controlador.Inserir();            
+            controlador.Inserir();
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -149,6 +158,6 @@ namespace e_Agenda.WinApp
             controlador.ConcluirItens();
         }
 
-       
+        
     }
 }

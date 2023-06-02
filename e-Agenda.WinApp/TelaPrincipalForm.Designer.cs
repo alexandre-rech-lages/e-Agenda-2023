@@ -105,6 +105,7 @@
             despesasMenuItem.Name = "despesasMenuItem";
             despesasMenuItem.Size = new Size(180, 22);
             despesasMenuItem.Text = "Despesas";
+            despesasMenuItem.Click += despesasMenuItem_Click;
             // 
             // categoriasMenuItem
             // 
@@ -153,7 +154,7 @@
             btnInserir.Name = "btnInserir";
             btnInserir.Padding = new Padding(7);
             btnInserir.Size = new Size(42, 42);
-            btnInserir.Click += btnInserir_Click;            
+            btnInserir.Click += btnInserir_Click;
             // 
             // btnEditar
             // 
